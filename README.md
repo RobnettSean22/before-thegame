@@ -56,6 +56,17 @@
     - kanji flash card x
     - Study Page
         * Flash Card
+    - login.js
+        * username
+        * password
+        * login button
+        * register Button
+    -sign up(register)
+        * username
+        * password
+        * email
+        * sign up button
+
     
 
 
@@ -68,6 +79,9 @@
     - KanjiCardList.js => StudyPage
     - Home => Home.js
     - Logo => home.js
+    - login => login.js
+    - register => signup.js
+    - signup button => myKanji.js
 
         
 

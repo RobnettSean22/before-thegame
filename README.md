@@ -54,10 +54,20 @@
         * sentence exmples
         * school year, jlpt, unicode, note
     - kanji flash card x
+    - Study Page
+        * Flash Card
     
 
 
+### Routes
 
+    - AllKanji => AllKanji.js
+    - AllKanji.js => SingleKanjiPage.js
+    - MyKanji => MyKanji.js
+    - MyKanji.js => KanjiCardList.js
+    - KanjiCardList.js => StudyPage
+    - Home => Home.js
+    - Logo => home.js
 
         
 
@@ -72,5 +82,41 @@
     - express-session
     - massive dotenv
 
-# database(sql)
+## server
+    - db
+    - index 
+    - controller
+        * userController
+        * kanjiController
 
+### endponts
+
+**User/auth**
+
+- userSession: => get => /auth/session
+- register: => /auth/register
+- logout: => /auth/logout
+- login: => /auth/login
+
+
+
+
+**Kanji**
+- showAllKanji => get => ?
+
+
+
+# database(sql)
+```sql
+CREATE TABLE users(
+    user_id SERIAL PRIMARY KEY NOT NULL,
+    username VARCHAR(30) NOT NULL,
+    password TEXT NOT NULL,
+    email TEXT,
+    image TEXT,
+    short_message VARCHAR(120)
+ );
+ INSERT INTO users(username, password, email, short_message)
+ VALUES
+ ('UniverSoul', 'blind22', 'blind22@gmail.com', 'learning to live in japan')
+```

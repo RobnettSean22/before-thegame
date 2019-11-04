@@ -5,6 +5,9 @@ import AllKanji from '../AllKanji/AllKanji'
 import MyKanji from '../MyKanji/MyKanji'
 import KanjiHelp from '../KanjiHelp/KanjiHelp'
 import Login from '../Login/Login'
+import './Header.css'
+import Logo from './logo.png'
+
  
 
 class Header extends Component {
@@ -21,14 +24,15 @@ class Header extends Component {
             <div>
                 <header className = 'nav'>
                     <div className = 'logo'>
-                        <img/>
+                        <img src = {Logo} alt = 'Logo'/>
                     </div>
-                    <NavLink className = 'direct' activeClassName = 'active' exact to = '/' >Home</NavLink>
-                    <NavLink className = 'direct' activeClassName = 'active' to = '/all_kanji' >All Kanji</NavLink>
-                    <NavLink className = 'direct' activeClassName = 'active' to  = '/my_kanji'> My Kanji</NavLink>
-                    <NavLink className = 'direct' activeClassName = 'active' to = '/kanji_help'>Kanji Help</NavLink>
-                    <NavLink className = 'direct' activeClassName = 'active' to = '/login'>Login</NavLink>
-                
+                    <div className = 'navlinks'>
+                        <NavLink className = 'direct' activeClassName = 'active' exact to = '/' >Home</NavLink>
+                        <NavLink className = 'direct' activeClassName = 'active' to = '/all_kanji' >All Ka<span>n</span>ji</NavLink>
+                        <NavLink className = 'direct' activeClassName = 'active' to  = '/my_kanji'> My Ka<span>n</span>ji</NavLink>
+                        <NavLink className = 'direct' activeClassName = 'active' to = '/kanji_help'>Ka<span>n</span>ji Help</NavLink>
+                        <NavLink className = 'direct' activeClassName = 'active' to = '/login'>Login</NavLink>
+                    </div>
                 </header>
                 <Switch>
                     <Route exact path ='/' component = {Home}/>

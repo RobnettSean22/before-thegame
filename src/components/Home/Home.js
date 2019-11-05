@@ -14,7 +14,10 @@ class Home extends Component {
         
         return (
             <div className = 'background'>
-                Home
+                <div className = 'concealer'>
+                    <input className = 'search-kanji' />
+                    <button className = 'search'>Search</button>
+                </div>
             </div>
         )
     }

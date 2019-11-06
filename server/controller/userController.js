@@ -20,7 +20,7 @@ module.exports = {
             }
     },
 
-    login: async (rq, res, next) => {
+    login: async (req, res, next) => {
         const {username, password} =req.body;
         const db = req.app.get('db');
         const [foundUser] = await db.find_user(username)

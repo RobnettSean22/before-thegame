@@ -5,6 +5,13 @@ const initalState = {
 
 export const SET_USER = 'SETE_USER';
 
+export const setUser = (user) => {
+    return{
+        type: SET_USER,
+        payload: user
+    }
+}
+
 const guest = (state = initalState, action) => {
     const {type, payload} = action
     switch(type){

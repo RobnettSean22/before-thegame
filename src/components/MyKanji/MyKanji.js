@@ -9,6 +9,7 @@ class MyKanji extends Component {
         }
     }
 
+
     render() {
         return (
             <div>

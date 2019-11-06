@@ -24,7 +24,7 @@ class AllKanji extends Component {
     
     render() {
        
-         
+        
         
         return (
             <div>

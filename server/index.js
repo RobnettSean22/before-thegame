@@ -7,10 +7,10 @@ const {register, login, logout, userSession } = require('./controller/userContro
 const userController = require('./controller/userController')
 app.use(express.json())
 
-const {CONNECTION_STRING, SESSION_SECRECT, SERVER_PORT} = process.env
+const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
 
 app.use(session({
-    secret: SESSION_SECRECT,
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitalized:false,
     cookie: {

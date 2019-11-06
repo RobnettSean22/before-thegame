@@ -133,4 +133,18 @@ CREATE TABLE users(
  INSERT INTO users(username, password, email, short_message)
  VALUES
  ('UniverSoul', 'blind22', 'blind22@gmail.com', 'learning to live in japan')
+
+
+
+ CREATE TABLE playlists(
+     playlist_id SERIAL PRIMARY KEY NOT NULL,
+     playlist_name TEXT,
+     user_id,
+     kanji_id,
+ )
+ INSERT INTO playlists(playlist_name, user_id, kanji_id)
+ VALUES
+ ('kitchen', 1, 2)
+
+ 
 ```

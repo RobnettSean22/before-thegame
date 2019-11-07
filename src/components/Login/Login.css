@@ -15,8 +15,8 @@ body{
 }
 
 .login-container{
-    width: 33%;
-    height: 46%;
+    width: 31%;
+    height: 44%;
     background:#030303;
     flex-direction: column ;
     display: flex;
@@ -31,7 +31,7 @@ body{
 .login-label-container{
     margin-bottom:5%;
     margin-top:5%;
-    margin-left: 12%;
+    margin-left: 9%;
 }
 
 label{
@@ -43,10 +43,22 @@ label{
 }
 
 .top-login-input{
-    margin-top:5%;
+    margin-top:1%; 
 }
-
+/*.top-login-input{
+    margin-top:5%; 
+}*/
 .login-input{
+    
+    width: 62%;
+    height: 13%;
+    margin-bottom: 5%;
+    margin-left: 18%;
+   
+    background:#FFFFFF;
+    font-size: 25px;
+}
+/* .login-input{
     
     width: 62%;
     height: 15%;
@@ -55,24 +67,36 @@ label{
    
     background:#FFFFFF;
     font-size: 25px;
-}
+} */
 
 
 input:focus, textarea:focus{
     outline: none;
 }
 
+
 .login-button{
-    width:20%;
-    height:13%;
+    width:30%;
+    height:42px;
     font-size:22px;
     border-radius: 10px;
     opacity: .75;
-    margin-left: 38%;
+    margin-left: 4%;
+    margin-bottom:3%;
+    margin-top: 2%;
     
 }
+.register-button{
+    margin-left: 18%;
+}
 
+.route-link{
+    text-decoration: none;
+    color:black;
+}
 
-button:focus {
+button:focus, button:hover {
+    cursor: pointer;
     outline:none;
+    
 }

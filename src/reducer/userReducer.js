@@ -3,7 +3,7 @@ const initalState = {
 
 }
 
-export const SET_USER = 'SETE_USER';
+export const SET_USER = 'SET_USER';
 
 export const setUser = (user) => {
     return{
@@ -11,6 +11,8 @@ export const setUser = (user) => {
         payload: user
     }
 }
+
+
 
 const guest = (state = initalState, action) => {
     const {type, payload} = action

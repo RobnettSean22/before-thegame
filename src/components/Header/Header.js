@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Route, Redirect, Switch, NavLink} from 'react-router-dom'
+import {Route, Switch, NavLink} from 'react-router-dom'
 import Home from '../Home/Home'
 import AllKanji from '../AllKanji/AllKanji'
 import MyKanji from '../MyKanji/MyKanji'

@@ -14,3 +14,4 @@ export default axios.create({
         "x-rapidapi-key": key
     }
 })
+

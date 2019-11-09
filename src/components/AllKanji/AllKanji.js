@@ -33,7 +33,7 @@ class AllKanji extends Component {
             console.log(allKanji)
             let filteredKanji = allKanji.filter((kanjiObj) => {
                 
-               return kanjiObj.kanji.character.indexOf(search) !== -1 || kanjiObj.kanji.meaning.english.indexOf(search) !== -1　|| kanjiObj.kanji.kunyomi.hiragana.indexOf(search) !== -1　|| kanjiObj.kanji.onyomi.katakana.indexOf(search) !== -1　
+               return kanjiObj.kanji.character.indexOf(search) !== -1 || kanjiObj.kanji.meaning.english.indexOf(search) !== -1　|| kanjiObj.kanji.kunyomi.hiragana.indexOf(search) !== -1　|| kanjiObj.kanji.onyomi.katakana.indexOf(search) !== -1　|| kanjiObj.kanji.onyomi.romaji.indexOf(search) !== -1 || kanjiObj.kanji.kunyomi.romaji.indexOf(search) !== -1
 
                 
                 
@@ -58,14 +58,14 @@ class AllKanji extends Component {
                         </div>
                         
                         <div className = 'pic-container'>
-                        <img classname = 'pics' src ={k.kanji.video.poster} alt = 'pic'/>
+                        <img className = 'pics' src ={k.kanji.video.poster} alt = 'pic'/>
                         </div>
                         
                     
                         
                         
                         <div className = 'english-container' >
-                        {k.kanji.meaning.english}
+                        <h2 className = 'english' >English: {k.kanji.meaning.english}</h2>
                         </div>
                         
                     </div>
@@ -75,7 +75,12 @@ class AllKanji extends Component {
         })
         return (
             <div>
-            <input value = {search} onChange = {(e) => this.setState({search:e.target.value})}/>
+            
+                <div className = 'search-input-container'>
+                    <input className = 'search-input' value = {search} onChange = {(e) => this.setState({search:e.target.value})}/>
+                </div>
+                
+            
            {filteredKanji}
             </div>
         )

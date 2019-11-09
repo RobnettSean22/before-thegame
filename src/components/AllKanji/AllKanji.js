@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Rapid from '../Rapid'
+import './AllKanji.css'
 // import {connect} from 'react-redux'
 // import {readKanji} from '../../reducer/kanjiReducer'
 class AllKanji extends Component {
@@ -38,12 +39,35 @@ class AllKanji extends Component {
                 
             }).map((k,i) => {
             return(
-                <div key = {i}>
-                    <div>
-                    {k.kanji.character}
-                    {k.kanji.meaning.english}
-                    {k.kanji.kunyomi.hiragana}
-                    {k.kanji.onyomi.katakana}
+                <div  key = {i}>
+                    <div className = 'kanji-container'>
+                        <div className = 'kanji'>
+                            <div className = 'character-container'>
+                            
+                            <h1 className = 'character'>{k.kanji.character}</h1>
+                            </div>
+                        
+                            <div className = 'kana' >
+                            
+                            <h2 className = 'kunyomi katahira' >KUN-YOMI: {k.kanji.kunyomi.hiragana}</h2>
+                            
+                            <h2 className = 'onyomi katahira' >ON-YOMI: {k.kanji.onyomi.katakana}</h2>
+                            
+                            
+                            </div>
+                        </div>
+                        
+                        <div className = 'pic-container'>
+                        <img classname = 'pics' src ={k.kanji.video.poster} alt = 'pic'/>
+                        </div>
+                        
+                    
+                        
+                        
+                        <div className = 'english-container' >
+                        {k.kanji.meaning.english}
+                        </div>
+                        
                     </div>
                     
                 </div>

@@ -124,9 +124,9 @@
 ```sql
 CREATE TABLE users(
     user_id SERIAL PRIMARY KEY NOT NULL,
-    username VARCHAR(30) NOT NULL,
+    username VARCHAR(30) NOT NULL UNIQUE,
     password TEXT NOT NULL,
-    email TEXT,
+    email TEXT UNIQUE,
     image TEXT,
     short_message VARCHAR(120)
  );
@@ -136,11 +136,11 @@ CREATE TABLE users(
 
 
 
- CREATE TABLE playlists(
+ CREATE TABLE studied(
      playlist_id SERIAL PRIMARY KEY NOT NULL,
      playlist_name TEXT,
-     user_id,
-     kanji_id,
+     user_id INTEGER REFERENCES users(user_id),
+     kanji_id INTEGER REFERENCES ,
  )
  INSERT INTO playlists(playlist_name, user_id, kanji_id)
  VALUES

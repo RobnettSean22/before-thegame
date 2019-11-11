@@ -4,6 +4,7 @@ const app = express();
 const massive = require('massive')
 const session = require('express-session')
 const {register, login, logout, userSession } = require('./controller/userController')
+const {createFolderStudied} = require('./controller/studiedController')
 const userController = require('./controller/userController')
 app.use(express.json())
 
@@ -34,6 +35,10 @@ app.get('/auth/user_session', userSession)
 
 // logout ********************************************
 app.delete('/auth/logout', logout)
+
+//kanji post in to datat table kanji
+
+app.post('/api/studied_folder/:user_id', createFolderStudied)
 
 let port = SERVER_PORT || 5000
 app.listen(port, () => console.log(`hear ya bruh on ${port}`))

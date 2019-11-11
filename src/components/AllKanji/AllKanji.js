@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Rapid from '../Rapid'
 import './AllKanji.css'
+import axios from 'axios'
 // import {connect} from 'react-redux'
 // import {readKanji} from '../../reducer/kanjiReducer'
 class AllKanji extends Component {
@@ -9,7 +10,9 @@ class AllKanji extends Component {
 
         this.state = {
                 search:'',
-                allKanji:[]
+                allKanji:[],
+               
+                
         }
         
     }
@@ -26,9 +29,10 @@ class AllKanji extends Component {
          })    
     }
 
+   
 
     render() {
-
+            console.log(this.state.selece)
             const {allKanji, search} = this.state
             console.log(allKanji)
             let filteredKanji = allKanji.filter((kanjiObj) => {
@@ -38,6 +42,7 @@ class AllKanji extends Component {
                 
                 
             }).map((k,i) => {
+               
             return(
                 <div  key = {i}>
                     <div className = 'kanji-container'>

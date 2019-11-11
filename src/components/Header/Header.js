@@ -6,6 +6,7 @@ import MyKanji from '../MyKanji/MyKanji'
 import KanjiHelp from '../KanjiHelp/KanjiHelp'
 import Login from '../Login/Login'
 import Signup from '../Signup/Signup'
+import FolderContent from '../FolderContent/FolderContent'
 import {connect} from 'react-redux'
 import {setUser} from '../../reducer/userReducer'
 import './Header.css'
@@ -62,6 +63,7 @@ class Header extends Component {
                     <Route exact path ='/kanji_help' component = {KanjiHelp}/>
                     <Route exact path ='/login' component = {Login}/>
                     <Route exact path = '/signup' component = {Signup}/>
+                    <Route exact path = '/folder_content' component = {FolderContent}/>
                   
                 
                 </Switch>

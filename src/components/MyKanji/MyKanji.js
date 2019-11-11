@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {setUser} from '../../reducer/userReducer'
+import {Link} from 'react-router-dom'
 
 
 class MyKanji extends Component {
@@ -18,6 +19,8 @@ class MyKanji extends Component {
   componentDidMount(){
       this.readFolder(this.props.user.user.user_id)
   }
+
+    
 
     readFolder(user_id){
        
@@ -41,6 +44,8 @@ class MyKanji extends Component {
         
     }
 
+    
+
     render() {
         console.log(this.props.user)
         const {folderName} = this.state
@@ -48,7 +53,7 @@ class MyKanji extends Component {
         const mapFolderName = folders.map((folder) => {
             return (
                 <div key = {folder.folder_id} >
-                    <button>{folder.folder_name}</button>               
+                    <button><Link to = {`/folder_content/${this.props.user.user.user_id}/${folder.folder_id}`}>{folder.folder_name}</Link></button>               
                 </div>
             )
         })

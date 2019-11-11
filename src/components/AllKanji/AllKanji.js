@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Rapid from '../Rapid'
 import './AllKanji.css'
-import axios from 'axios'
+import FolderContent from '../FolderContent/FolderContent'
 // import {connect} from 'react-redux'
 // import {readKanji} from '../../reducer/kanjiReducer'
 class AllKanji extends Component {
@@ -15,6 +15,7 @@ class AllKanji extends Component {
                 
         }
         
+    
     }
     componentDidMount(){
         this.readAllKanji()

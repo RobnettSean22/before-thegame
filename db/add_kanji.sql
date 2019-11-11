@@ -1,4 +1,4 @@
-INSERT INTO kanji(index_number, folder_id)
+INSERT INTO kanji(index_number, user_id, folder_id)
 VALUES
-($1, $2);
+($1, $2, $3);
 SELECT * FROM  kanji

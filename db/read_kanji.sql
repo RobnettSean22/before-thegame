@@ -1,3 +1,3 @@
 SELECT * FROM kanji
 
-WHERE folder_id = $1;
+WHERE user_id = $1 AND folder_id = $2; 

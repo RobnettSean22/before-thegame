@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Rapid from '../Rapid'
 import './AllKanji.css'
-import FolderContent from '../FolderContent/FolderContent'
-// import {connect} from 'react-redux'
-// import {readKanji} from '../../reducer/kanjiReducer'
+
+import axios from 'axios'
+import {connect} from 'react-redux'
+import {setUser} from '../../reducer/kanjiReducer'
 class AllKanji extends Component {
     constructor(props) {
         super(props)
@@ -11,7 +12,8 @@ class AllKanji extends Component {
         this.state = {
                 search:'',
                 allKanji:[],
-               
+                add:[]
+             
                 
         }
         
@@ -30,10 +32,21 @@ class AllKanji extends Component {
          })    
     }
 
-   
+    addKanji(user_id, folder_id, index_number){
+        axios.post(`/api/add_kanji/${user_id}/${folder_id}`, {index_number}).then(response => {
+            this.setState({
+                 add:response.data
+ 
+            })
+        })
+ 
+    }
+
+  
 
     render() {
-            console.log(this.state.selece)
+           
+            console.log(this.state.add)
             const {allKanji, search} = this.state
             console.log(allKanji)
             let filteredKanji = allKanji.filter((kanjiObj) => {
@@ -43,9 +56,11 @@ class AllKanji extends Component {
                 
                 
             }).map((k,i) => {
+                console.log(typeof k.references.kodansha)
                
             return(
                 <div  key = {i}>
+                    
                     <div className = 'kanji-container'>
                         <div className = 'kanji'>
                             <div className = 'character-container'>
@@ -64,7 +79,7 @@ class AllKanji extends Component {
                         </div>
                         
                         <div className = 'pic-container'>
-                        <img className = 'pics' src ={k.kanji.video.poster} alt = 'pic'/>
+                       <img onClick = {(e) => this.addKanji(this.props.user.user.user_id, +this.props.match.params.folder_id, k.references.kodansha)} className = 'pics' src ={k.kanji.video.poster} alt = 'pic'/>
                         </div>
                         
                     
@@ -93,18 +108,18 @@ class AllKanji extends Component {
     }
 }
 
-export default AllKanji
 
-// const mapStateToProps = state => {
-//  return state
 
-// }
+const mapStateToProps = state => {
+ return state
 
-// const mapDispatchToProps = {
-//     readKanji
-// }
+}
+
+const mapDispatchToProps = {
+    setUser
+}
  
-// export default connect(
-//     mapStateToProps, mapDispatchToProps
+export default connect(
+    mapStateToProps, mapDispatchToProps
   
-// )(AllKanji)
+)(AllKanji)

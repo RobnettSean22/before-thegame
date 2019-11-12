@@ -5,7 +5,7 @@ const massive = require('massive')
 const session = require('express-session')
 const {register, login, logout, userSession } = require('./controller/userController')
 const {createFolderStudied, updateFolderStudied, deleteFolderStudied, readFolder} = require('./controller/studiedController')
-const {addKanji,  deleteKanji} = require('./controller/kanjiController')
+const {addKanji,  deleteKanji, readKanji} = require('./controller/kanjiController')
 
 app.use(express.json())
 
@@ -48,7 +48,9 @@ app.delete('/api/studied_delete/:folder_id', deleteFolderStudied)
 
 // add kanji in to studied folder *****************
 
-app.post('/api/add_kanji/:folder_id', addKanji)
+app.get('/api/read_kanji/:user_id/:folder_id', readKanji)
+
+app.post('/api/add_kanji/:user_id/:folder_id', addKanji)
 
 app.delete('/api/delete_kanji/:kanji_id', deleteKanji)
 

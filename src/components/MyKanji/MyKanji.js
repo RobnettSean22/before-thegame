@@ -3,6 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {setUser} from '../../reducer/userReducer'
 import {Link} from 'react-router-dom'
+import './MyKanji.css'
 
 
 class MyKanji extends Component {
@@ -10,6 +11,8 @@ class MyKanji extends Component {
         super(props)
 
         this.state = {
+                studying:[],
+                study:[],
                 folders:[],
                folderName: ''
               
@@ -17,7 +20,12 @@ class MyKanji extends Component {
     }
 
   componentDidMount(){
-      this.readFolder(this.props.user.user.user_id)
+      if(this.props.user.user){
+        return this.readFolder(this.props.user.user.user_id)
+      }else{
+         this.props.history.push('/')
+      }
+      
   }
 
     
@@ -47,7 +55,7 @@ class MyKanji extends Component {
     
 
     render() {
-        console.log(this.props.user)
+        
         const {folderName} = this.state
         const {folders} = this.state
         const mapFolderName = folders.map((folder) => {
@@ -59,11 +67,14 @@ class MyKanji extends Component {
         })
       
         return (
-            <div>
-                {mapFolderName}
-                <button onClick = {(e) => this.createFolderStudied(this.props.user.user.user_id, folderName)}>Add List</button>
-                <input  value = {folderName} onChange = {(e) => this.setState({folderName:e.target.value})}/>
+            <div className = 'background2'>
+                <div className = 'containers studied'>
+                    {mapFolderName}
+                    <button onClick = {(e) => this.createFolderStudied(this.props.user.user.user_id, folderName)}>Add List</button>
+                    <input  value = {folderName} onChange = {(e) => this.setState({folderName:e.target.value})}/>
+                </div>
 
+                
                 
             </div>
         )

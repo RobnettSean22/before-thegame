@@ -4,7 +4,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 3px solid #707070;
+    border: 3px solid black;
+    background:white;
 }
 .navlinks{
     width:36%;

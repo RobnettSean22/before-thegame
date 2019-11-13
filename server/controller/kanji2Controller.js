@@ -17,8 +17,7 @@ module.exports = {
     readKanji2 : async (req,res, next) => {
         const db = req.app.get('db')
         const {user_id, folder_id} = req.params
-        db.read2_kanji([user_id, folder_id]).then((kanji2) => res.status(200).send(kanji2)).catch(err => {
-            res.status(400).send({errorMessage:'can not see kanji'})
-        })
+        const kanji2 = await db.read2_kanji([user_id, folder_id])
+            res.status(200).send(kanji2)
     }
 }

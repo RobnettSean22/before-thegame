@@ -12,7 +12,9 @@ class AllKanji extends Component {
         this.state = {
                 search:'',
                 allKanji:[],
-                add:[]
+                add:[],
+                add2:[],
+                add3:[]
              
                 
         }
@@ -44,17 +46,29 @@ class AllKanji extends Component {
     addKanji2(user_id, folder_id, index_number){
         axios.post(`/api/add2_kanji/${user_id}/${folder_id}`, {index_number}).then(response => {
             this.setState({
-                 add:response.data
+                 add2:response.data
  
             })
         })
  
     }
 
+    addKanji3(user_id, folder_id, index_number){
+        axios.post(`/api/add3_kanji/${user_id}/${folder_id}`, {index_number}).then(response => {
+            this.setState({
+                 add3:response.data
+ 
+            })
+        })
+ 
+    }
+
+
+
   
 
     render() {
-           
+            console.log(this.state.add2)
             console.log(this.state.add)
             const {allKanji, search} = this.state
             console.log(allKanji)

@@ -65,6 +65,9 @@ class Header extends Component {
                     <Route exact path = '/signup' component = {Signup}/>
                     <Route exact path = '/folder_content/:user_id/:folder_id' component = {FolderContent}/>
                     <Route exact path = '/add_to_folder/:user_id/:folder_id' component = {AllKanji}/>
+                    <Route exact path = '/add2_to_folder/:user_id/:folder_id' component = {AllKanji}/>
+                    <Route exact path = '/add3_to_folder/:user_id/:folder_id' component = {AllKanji}/>
+                    
                   
                 
                 </Switch>

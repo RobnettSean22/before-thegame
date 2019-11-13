@@ -10,14 +10,21 @@ class FolderContent extends Component {
         super(props)
 
         this.state = {
-                 kanjiCode:[],
-                 allKanji:[]
+            
+            allKanji:[],
+            kanjiCode:[],
+            kanjiCode2:[],
+            kanjiCode3:[]
+            
         }
     }
     componentDidMount(){
         this.readAllKanji()
         this.readKanji(this.props.user.user.user_id, +this.props.match.params.folder_id)
         this.readKanji2(this.props.user.user.user_id, +this.props.match.params.folder_id)
+        this.readKanji3(this.props.user.user.user_id, +this.props.match.params.folder_id)
+        
+       
     }
     
     readAllKanji(){
@@ -37,14 +44,21 @@ class FolderContent extends Component {
             })
         })
     }
+ 
     readKanji2(user_id, folder_id) {
         axios.get(`/api/read2_kanji/${user_id}/${folder_id}`).then(response => {
             this.setState({
-                kanjiCode:response.data
+                kanjiCode2:response.data
             })
         })
     }
-    
+    readKanji3(user_id, folder_id) {
+        axios.get(`/api/read3_kanji/${user_id}/${folder_id}`).then(response => {
+            this.setState({
+                kanjiCode3:response.data
+            })
+        })
+    }
 
     
 
@@ -53,53 +67,9 @@ class FolderContent extends Component {
         const {allKanji} = this.state
        
         const {kanjiCode} = this.state
-        
-        // const mapKanjCode = kanjiCode.map((kc, i) => {
-        //     const code = allKanji.filter(kcc =>{
-        //         return kc.index_number === kcc.references.kodansha
-        //     })
-        //     console.log(54616, code)
-        //     const mapShit = code.map((fu,i) =>{
-        //         return(
-        //             <div  key = {i}>
-                    
-        //             <div className = 'kanji-container'>
-        //                 <div className = 'kanji'>
-        //                     <div className = 'character-container'>
-                            
-        //                     <h1 className = 'character'>{fu.kanji.character}</h1>
-        //                     </div>
-                        
-        //                     <div className = 'kana' >
-                            
-        //                     <h2 className = 'kunyomi katahira' >KUN-YOMI: {fu.kanji.kunyomi.hiragana}</h2>
-                            
-        //                     <h2 className = 'onyomi katahira' >ON-YOMI: {fu.kanji.onyomi.katakana}</h2>
-                            
-                            
-        //                     </div>
-        //                 </div>
-                        
-        //                 <div className = 'pic-container'>
-        //                <img  className = 'pics' src ={fu.kanji.video.poster} alt = 'pic'/>
-        //                 </div>
-                        
-                    
-                        
-                        
-        //                 <div className = 'english-container' >
-        //                 <h2 className = 'english' >English: {fu.kanji.meaning.english}</h2>
-        //                 </div>
-                        
-        //             </div>
-                    
-        //         </div>
-        //         )
-        //     })
-        //     return mapShit
-    
-    // })
-
+        const {kanjiCode2} = this.state
+        const {kanjiCode3} = this.state
+       
         
         return (
             <div>
@@ -149,6 +119,97 @@ class FolderContent extends Component {
                 return mapShit
         
         })}
+              {allKanji.length > 1 && kanjiCode2.map((kc, i) => {
+                const code = allKanji.filter(kcc =>{
+                    return kc.index_number === kcc.references.kodansha
+                })
+                console.log(54616, code)
+                const mapShit = code.map((fu,i) =>{
+                    return(
+                        <div  key = {i}>
+                        
+                        <div className = 'kanji-container'>
+                            <div className = 'kanji'>
+                                <div className = 'character-container'>
+                                
+                                <h1 className = 'character'>{fu.kanji.character}</h1>
+                                </div>
+                            
+                                <div className = 'kana' >
+                                
+                                <h2 className = 'kunyomi katahira' >KUN-YOMI: {fu.kanji.kunyomi.hiragana}</h2>
+                                
+                                <h2 className = 'onyomi katahira' >ON-YOMI: {fu.kanji.onyomi.katakana}</h2>
+                                
+                                
+                                </div>
+                            </div>
+                            
+                            <div className = 'pic-container'>
+                           <img  className = 'pics' src ={fu.kanji.video.poster} alt = 'pic'/>
+                            </div>
+                            
+                        
+                            
+                            
+                            <div className = 'english-container' >
+                            <h2 className = 'english' >English: {fu.kanji.meaning.english}</h2>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    )
+                })
+                return mapShit
+        
+        })}
+              {allKanji.length > 1 && kanjiCode3.map((kc, i) => {
+                const code = allKanji.filter(kcc =>{
+                    return kc.index_number === kcc.references.kodansha
+                })
+                console.log(54616, code)
+                const mapShit = code.map((fu,i) =>{
+                    return(
+                        <div  key = {i}>
+                        
+                        <div className = 'kanji-container'>
+                            <div className = 'kanji'>
+                                <div className = 'character-container'>
+                                
+                                <h1 className = 'character'>{fu.kanji.character}</h1>
+                                </div>
+                            
+                                <div className = 'kana' >
+                                
+                                <h2 className = 'kunyomi katahira' >KUN-YOMI: {fu.kanji.kunyomi.hiragana}</h2>
+                                
+                                <h2 className = 'onyomi katahira' >ON-YOMI: {fu.kanji.onyomi.katakana}</h2>
+                                
+                                
+                                </div>
+                            </div>
+                            
+                            <div className = 'pic-container'>
+                           <img  className = 'pics' src ={fu.kanji.video.poster} alt = 'pic'/>
+                            </div>
+                            
+                        
+                            
+                            
+                            <div className = 'english-container' >
+                            <h2 className = 'english' >English: {fu.kanji.meaning.english}</h2>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    )
+                })
+                return mapShit
+        
+        })}
+        
             </div>
         )
     }

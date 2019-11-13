@@ -17,6 +17,7 @@ class FolderContent extends Component {
     componentDidMount(){
         this.readAllKanji()
         this.readKanji(this.props.user.user.user_id, +this.props.match.params.folder_id)
+        this.readKanji2(this.props.user.user.user_id, +this.props.match.params.folder_id)
     }
     
     readAllKanji(){
@@ -31,6 +32,13 @@ class FolderContent extends Component {
 
     readKanji(user_id, folder_id) {
         axios.get(`/api/read_kanji/${user_id}/${folder_id}`).then(response => {
+            this.setState({
+                kanjiCode:response.data
+            })
+        })
+    }
+    readKanji2(user_id, folder_id) {
+        axios.get(`/api/read2_kanji/${user_id}/${folder_id}`).then(response => {
             this.setState({
                 kanjiCode:response.data
             })

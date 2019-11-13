@@ -12,10 +12,17 @@ CREATE TABLE users(
 
 CREATE TABLE kanji(
 kanji_id SERIAL PRIMARY KEY NOT NULL,
-index_number INTEGER, 
+index_number Text, 
 user_id INTEGER REFERENCES users(user_id),
 folder_id INTEGER REFERENCES studied(folder_id),
-studying_id INTEGER REFERENCES studying(studying_id)
+
+);
+CREATE TABLE kanji2(
+kanji_id SERIAL PRIMARY KEY NOT NULL,
+index_number Text, 
+user_id INTEGER REFERENCES users(user_id),
+studying_id INTEGER REFERENCES studying(studying_id),
+
 );
 
 CREATE TABLE studied(

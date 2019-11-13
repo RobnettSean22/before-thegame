@@ -1,4 +1,4 @@
-INSERT INTO studying(user_id, studying_name)
+INSERT INTO studying(user_id, folder_name)
 VALUES
 ($1, $2);
 SELECT * FROM studying

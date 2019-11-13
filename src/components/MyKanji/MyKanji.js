@@ -14,6 +14,7 @@ class MyKanji extends Component {
                 studying:[],
                 studyingName:'',
                 study:[],
+                studyName:'',
                 folders:[],
                folderName: ''
               
@@ -21,6 +22,7 @@ class MyKanji extends Component {
     }
 
    componentDidMount(){
+       this.readStudyingFolder3(this.props.user.user.user_id)
       this.readStudyingFolder(this.props.user.user.user_id)
      this.readFolder(this.props.user.user.user_id)
     
@@ -77,6 +79,30 @@ class MyKanji extends Component {
         
     }
 
+    readStudyingFolder3(user_id){
+       
+        axios.get(`/api/get_study_folder/${user_id}`).then(response => {
+           
+            this.setState({
+                study:response.data
+
+            })
+        })
+    }
+    createFolderStudying3(user_id, studyName){
+       
+        axios.post(`/api/study_folder/${user_id}`, {studyName}).then(response => {
+            console.log(response.data)
+            this.setState({
+                study:response.data,
+                studyName:''
+               
+            })
+            
+        })
+        
+    }
+
     
 
     render() {
@@ -84,11 +110,20 @@ class MyKanji extends Component {
         const {folderName} = this.state
         const {folders} = this.state
         const {studying, studyingName} = this.state
+        const {study, studyName} = this.state
+
+        const mapStudy = study.map(folder3 =>    {
+            return(
+                <div key = {folder3.folder_id} >
+                <button><Link to = {`/folder_content/${this.props.user.user.user_id}/${folder3.folder_id}`}>{folder3.folder_name}</Link></button>               
+            </div>
+            )
+        })
 
         const mapStudying = studying.map(folder2 => {
             return(
-                <div key = {folder2.studying_id} >
-                    <button><Link to = {`/folder_content/${this.props.user.user.user_id}/${folder2.studying_id}`}>{folder2.studying_name}</Link></button>               
+                <div key = {folder2.folder_id} >
+                    <button><Link to = {`/folder_content/${this.props.user.user.user_id}/${folder2.folder_id}`}>{folder2.folder_name}</Link></button>               
                 </div>
             )
         })
@@ -102,15 +137,20 @@ class MyKanji extends Component {
       
         return (
             <div className = 'background2'>
-                <div className = 'containers studied'>
+                <div className = 'containers studied1'>
                     {mapFolderName}
                     <button onClick = {(e) => this.createFolderStudied(this.props.user.user.user_id, folderName)}>Add List</button>
                     <input  value = {folderName} onChange = {(e) => this.setState({folderName:e.target.value})}/>
                 </div>
-                <div className = 'containers studied'>
+                <div className = 'containers studying2'>
                     {mapStudying}
                     <button onClick = {(e) => this.createFolderStudying(this.props.user.user.user_id, studyingName)}>Add List</button>
                     <input  value = {studyingName} onChange = {(e) => this.setState({studyingName:e.target.value})}/>
+                </div>
+                <div className = 'containers study3'>
+                    {mapStudy}
+                    <button onClick = {(e) => this.createFolderStudying3(this.props.user.user.user_id, studyName)}>Add List</button>
+                    <input  value = {studyName} onChange = {(e) => this.setState({studyName:e.target.value})}/>
                 </div>
 
                 

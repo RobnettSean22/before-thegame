@@ -6,7 +6,9 @@ const session = require('express-session')
 const {register, login, logout, userSession } = require('./controller/userController')
 const {createFolderStudied, updateFolderStudied, deleteFolderStudied, readFolder} = require('./controller/studiedController')
 const {createFolderStudying, updateFolderStudying, deleteFolderStudying, readStudyingFolder} = require('./controller/studyingController')
+const {createFolderStudying3, updateFolderStudying3, deleteFolderStudying3, readStudyingFolder3} = require('./controller/studyController')
 const {addKanji,  deleteKanji, readKanji} = require('./controller/kanjiController')
+const {addKanji2,  deleteKanji2, readKanji2} = require('./controller/kanji2Controller')
 
 app.use(express.json())
 
@@ -56,6 +58,15 @@ app.put('/api/studying_folder_update/:studying_id', updateFolderStudying)
 
 app.delete('/api/studying_delete/:studying_id', deleteFolderStudying)
 
+// studtying folder 2222222****************************
+app.get('/api/get_study_folder/:user_id', readStudyingFolder3)
+
+app.post('/api/study_folder/:user_id', createFolderStudying3)
+
+app.put('/api/study_folder_update/:studying_id', updateFolderStudying3)
+
+app.delete('/api/study_delete/:studying_id', deleteFolderStudying3)
+
 
 // add kanji in to studied folder *****************
 
@@ -64,6 +75,14 @@ app.get('/api/read_kanji/:user_id/:folder_id', readKanji)
 app.post('/api/add_kanji/:user_id/:folder_id', addKanji)
 
 app.delete('/api/delete_kanji/:kanji_id', deleteKanji)
+
+// add kanji in to studying folder *****************
+
+app.get('/api/read2_kanji/:user_id/:folder_id', readKanji2)
+
+app.post('/api/add2_kanji/:user_id/:folder_id', addKanji2)
+
+app.delete('/api/delete2_kanji/:kanji_id', deleteKanji2)
 
 let port = SERVER_PORT || 5000
 app.listen(port, () => console.log(`hear ya bruh on ${port}`))

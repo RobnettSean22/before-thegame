@@ -1,5 +1,5 @@
-DELETE FROM studyign
+DELETE FROM studying
 
-WHERE studying_id = $1;
+WHERE folder_id = $1;
 
 SELECT * FROM studying;

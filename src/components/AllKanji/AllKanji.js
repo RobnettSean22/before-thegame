@@ -41,6 +41,15 @@ class AllKanji extends Component {
         })
  
     }
+    addKanji2(user_id, folder_id, index_number){
+        axios.post(`/api/add2_kanji/${user_id}/${folder_id}`, {index_number}).then(response => {
+            this.setState({
+                 add:response.data
+ 
+            })
+        })
+ 
+    }
 
   
 

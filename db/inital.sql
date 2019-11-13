@@ -14,7 +14,8 @@ CREATE TABLE kanji(
 kanji_id SERIAL PRIMARY KEY NOT NULL,
 index_number INTEGER, 
 user_id INTEGER REFERENCES users(user_id),
-folder_id INTEGER REFERENCES studied(folder_id)
+folder_id INTEGER REFERENCES studied(folder_id),
+studying_id INTEGER REFERENCES studying(studying_id)
 );
 
 CREATE TABLE studied(

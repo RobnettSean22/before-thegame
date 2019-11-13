@@ -21,7 +21,7 @@ class MyKanji extends Component {
 
   componentDidMount(){
       if(this.props.user.user){
-        return this.readFolder(this.props.user.user.user_id)
+        return this.readFolder(this.props.user.user.user_id) && this.readStudyingFolder(this.props.user.user.user_id)
       }else{
          this.props.history.push('/')
       }
@@ -38,6 +38,14 @@ class MyKanji extends Component {
             })
         })
     }
+    readStudyingFolder(user_id){
+       
+        axios.get(`/api/get_folder/${user_id}`).then(response => {
+            this.setState({
+                studying:response.data
+            })
+        })
+    }
   
     createFolderStudied(user_id, folderName){
        
@@ -45,6 +53,18 @@ class MyKanji extends Component {
             console.log(response.data)
             this.setState({
                 folders:response.data,
+               
+            })
+            
+        })
+        
+    }
+    createFolderStudying(user_id, studyingName){
+       
+        axios.post(`/api/studied_folder/${user_id}`, {studyingName}).then(response => {
+            console.log(response.data)
+            this.setState({
+                studying:response.data,
                
             })
             

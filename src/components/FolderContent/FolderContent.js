@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {setUser} from  '../../reducer/userReducer'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import AllKanji from '../AllKanji/AllKanji'
 
 class FolderContent extends Component {
     constructor(props) {

@@ -48,7 +48,7 @@ app.put('/api/studided_folder_update/:folder_id', updateFolderStudied)
 app.delete('/api/studied_delete/:folder_id', deleteFolderStudied)
 
 // studtying folder 2222222****************************
-app.get('/api/get_folder/:user_id', readStudyingFolder)
+app.get('/api/get_studying_folder/:user_id', readStudyingFolder)
 
 app.post('/api/studying_folder/:user_id', createFolderStudying)
 

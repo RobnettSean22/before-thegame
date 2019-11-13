@@ -12,6 +12,7 @@ class MyKanji extends Component {
 
         this.state = {
                 studying:[],
+                studyingName:'',
                 study:[],
                 folders:[],
                folderName: ''
@@ -19,13 +20,10 @@ class MyKanji extends Component {
         }
     }
 
-  componentDidMount(){
-      if(this.props.user.user){
-        return this.readFolder(this.props.user.user.user_id) && this.readStudyingFolder(this.props.user.user.user_id)
-      }else{
-         this.props.history.push('/')
-      }
-      
+   componentDidMount(){
+      this.readStudyingFolder(this.props.user.user.user_id)
+     this.readFolder(this.props.user.user.user_id)
+    
   }
 
     
@@ -38,33 +36,40 @@ class MyKanji extends Component {
             })
         })
     }
-    readStudyingFolder(user_id){
-       
-        axios.get(`/api/get_folder/${user_id}`).then(response => {
-            this.setState({
-                studying:response.data
-            })
-        })
-    }
-  
+
     createFolderStudied(user_id, folderName){
        
         axios.post(`/api/studied_folder/${user_id}`, {folderName}).then(response => {
             console.log(response.data)
             this.setState({
                 folders:response.data,
-               
+                folderName:''
+                
             })
             
         })
         
     }
+
+    readStudyingFolder(user_id){
+       
+        axios.get(`/api/get_studying_folder/${user_id}`).then(response => {
+           
+            this.setState({
+                studying:response.data
+
+            })
+        })
+    }
+  
+ 
     createFolderStudying(user_id, studyingName){
        
-        axios.post(`/api/studied_folder/${user_id}`, {studyingName}).then(response => {
+        axios.post(`/api/studying_folder/${user_id}`, {studyingName}).then(response => {
             console.log(response.data)
             this.setState({
                 studying:response.data,
+                studyingName:''
                
             })
             
@@ -78,6 +83,15 @@ class MyKanji extends Component {
         
         const {folderName} = this.state
         const {folders} = this.state
+        const {studying, studyingName} = this.state
+
+        const mapStudying = studying.map(folder2 => {
+            return(
+                <div key = {folder2.studying_id} >
+                    <button><Link to = {`/folder_content/${this.props.user.user.user_id}/${folder2.studying_id}`}>{folder2.studying_name}</Link></button>               
+                </div>
+            )
+        })
         const mapFolderName = folders.map((folder) => {
             return (
                 <div key = {folder.folder_id} >
@@ -92,6 +106,11 @@ class MyKanji extends Component {
                     {mapFolderName}
                     <button onClick = {(e) => this.createFolderStudied(this.props.user.user.user_id, folderName)}>Add List</button>
                     <input  value = {folderName} onChange = {(e) => this.setState({folderName:e.target.value})}/>
+                </div>
+                <div className = 'containers studied'>
+                    {mapStudying}
+                    <button onClick = {(e) => this.createFolderStudying(this.props.user.user.user_id, studyingName)}>Add List</button>
+                    <input  value = {studyingName} onChange = {(e) => this.setState({studyingName:e.target.value})}/>
                 </div>
 
                 

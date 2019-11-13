@@ -57,7 +57,7 @@ class AllKanji extends Component {
                 
             }).map((k,i) => {
                 console.log(typeof k.references.kodansha)
-               
+                
             return(
                 <div  key = {i}>
                     

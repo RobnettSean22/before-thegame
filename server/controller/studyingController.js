@@ -3,8 +3,8 @@ module.exports = {
         const db = req.app.get('db')
         const {user_id} = req.params
         const {studyingName} = req.body
-console.log(folderName)
-        db.add_to_studying([user_id, studyingName]).then((studied) => res.status(200).send(studied)).catch(err => {
+
+        db.add_to_studying([user_id, studyingName]).then((studying) => res.status(200).send(studying)).catch(err => {
             res.status(400).send({errorMessage:'didnt add a folder'})
         })
     },
@@ -25,12 +25,13 @@ console.log(folderName)
         })
     },
 
-    readStudyingFolder : (req, res, next) => {
+    readStudyingFolder : async (req, res, next) => {
         const db = req.app.get('db')
         const {user_id} = req.params
-        db.read_folder_studying(user_id).then((studied) => res.status(200).send(studied)).catch(err => {
-            res.status(400).send({errorMessage:'cant read'})
-        })
+        const studying = await db.read_studying_folder(user_id)
+        if(studying){
+            res.status(200).send(studying)
+        }
     }
 
     

@@ -23,21 +23,25 @@ class MyKanji extends Component {
     }
 
    componentDidMount(){
-       this.readStudyingFolder3(this.props.user.user.user_id)
-      this.readStudyingFolder(this.props.user.user.user_id)
-     this.readFolder(this.props.user.user.user_id)
+       if(this.props.user.user){
+        return    this.readStudyingFolder(this.props.user.user.user_id) && this.readStudyingFolder3(this.props.user.user.user_id) && this.readFolder(this.props.user.user.user_id)
+
+       }else{
+           this.props.history.push('/login/')
+       }
+     
     
   }
 
     
 
-    readFolder(user_id){
+    async readFolder(user_id){
        
-        axios.get(`/api/get_folder/${user_id}`).then(response => {
+        const response = await axios.get(`/api/get_folder/${user_id}`)
             this.setState({
                 folders:response.data
             })
-        })
+        
     }
 
     createFolderStudied(user_id, folderName){
@@ -142,7 +146,7 @@ class MyKanji extends Component {
         const mapStudy = study.map(folder3 =>    {
             return(
                 <div key = {folder3.folder_id} >
-                <button><Link to = {{pathname: `/folder_content/${this.props.user.user.user_id}/${folder3.folder_id}`, state: "third add"}}>{folder3.folder_name}</Link></button>   
+                <Link to = {{pathname: `/folder_content/${this.props.user.user.user_id}/${folder3.folder_id}`, state: "third add"}}>{folder3.folder_name}</Link>
                 <button onClick = {(e) => this.deleteFolderStudying3(this.props.user.user.user_id, folder3.folder_id)}>Delete</button>            
             </div>
             )
@@ -151,7 +155,7 @@ class MyKanji extends Component {
         const mapStudying = studying.map(folder2 => {
             return(
                 <div key = {folder2.folder_id} >
-                    <button><Link to = {{pathname:`/folder_content/${this.props.user.user.user_id}/${folder2.folder_id}`, state: "second add"}}>{folder2.folder_name}</Link></button>  
+                    <Link to = {{pathname:`/folder_content/${this.props.user.user.user_id}/${folder2.folder_id}`, state: "second add"}}>{folder2.folder_name}</Link>
                     <button onClick = {(e) => this.deleteFolderStudying(this.props.user.user.user_id, folder2.folder_id)}>Delete</button>                         
                 </div>
             )
@@ -159,7 +163,7 @@ class MyKanji extends Component {
         const mapFolderName = folders.map((folder) => {
             return (
                 <div key = {folder.folder_id} >
-                    <div><Link to = {{pathname:`/folder_content/${this.props.user.user.user_id}/${folder.folder_id}`, state: "first add"}}>{folder.folder_name}</Link></div>    
+                    <Link to = {{pathname:`/folder_content/${this.props.user.user.user_id}/${folder.folder_id}`, state: "first add"}}>{folder.folder_name}</Link>
                     <button onClick = {(e) => this.deleteFolderStudied(this.props.user.user.user_id, folder.folder_id)}>Delete</button>           
                 </div>
             )
@@ -167,20 +171,28 @@ class MyKanji extends Component {
        
         return (
             <div className = 'background2'>
-                <div className = 'containers studied1'>
-                    {mapFolderName}
-                    <button onClick = {(e) => this.createFolderStudied(this.props.user.user.user_id, folderName)}>Add List</button>
-                    <input  value = {folderName} onChange = {(e) => this.setState({folderName:e.target.value})}/>
-                </div>
-                <div className = 'containers studying2'>
-                    {mapStudying}
-                    <button onClick = {(e) => this.createFolderStudying(this.props.user.user.user_id, studyingName)}>Add List</button>
-                    <input  value = {studyingName} onChange = {(e) => this.setState({studyingName:e.target.value})}/>
-                </div>
-                <div className = 'containers study3'>
-                    {mapStudy}
-                    <button onClick = {(e) => this.createFolderStudying3(this.props.user.user.user_id, studyName)}>Add List</button>
-                    <input  value = {studyName} onChange = {(e) => this.setState({studyName:e.target.value})}/>
+                <div className = 'all_containers'>
+                    <div className = 'containers studied1'>
+                        <div className = 'folders'>
+                        {mapFolderName}
+                        </div>
+                        <button onClick = {(e) => this.createFolderStudied(this.props.user.user.user_id, folderName)}>Create folder</button>
+                        <input  value = {folderName} onChange = {(e) => this.setState({folderName:e.target.value})}/>
+                    </div>
+                    <div className = 'containers studying2'>
+                        <div className = 'folders'>
+                        {mapStudying}
+                        </div>
+                        <button onClick = {(e) => this.createFolderStudying(this.props.user.user.user_id, studyingName)}>Creat folder</button>
+                        <input  value = {studyingName} onChange = {(e) => this.setState({studyingName:e.target.value})}/>
+                    </div>
+                    <div className = 'containers study3'>
+                        <div className = 'folders'>
+                        {mapStudy}
+                        </div>
+                        <button onClick = {(e) => this.createFolderStudying3(this.props.user.user.user_id, studyName)}>Create folder</button>
+                        <input  value = {studyName} onChange = {(e) => this.setState({studyName:e.target.value})}/>
+                    </div>
                 </div>
 
                 

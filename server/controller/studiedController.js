@@ -29,8 +29,8 @@ console.log(folderName)
     readFolder : async (req, res, next) => {
         const db = req.app.get('db')
         const {user_id} = req.params
-        const studied = await db.read_folder(user_id)
-            res.status(200).send(studied)
+       db.read_folder(user_id).then((studied) => res.status(200).send(studied))
+            
     }
 
     

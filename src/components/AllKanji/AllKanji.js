@@ -63,11 +63,14 @@ class AllKanji extends Component {
  
     }
 
-
+    
 
   
 
     render() {
+        console.log(this.props.match.params.folder_name)
+       
+            console.log('this data will be added top the ' + this.props.location.state + ' folder')
             console.log(this.state.add2)
             console.log(this.state.add)
             const {allKanji, search} = this.state
@@ -102,7 +105,16 @@ class AllKanji extends Component {
                         </div>
                         
                         <div className = 'pic-container'>
-                       <img onClick = {(e) => this.addKanji(this.props.user.user.user_id, +this.props.match.params.folder_id, k.references.kodansha)} className = 'pics' src ={k.kanji.video.poster} alt = 'pic'/>
+                       <img onClick = {(e) => {
+                           if(this.props.location.state === "first add"){
+                               return this.addKanji(this.props.user.user.user_id, +this.props.match.params.folder_id, k.references.kodansha)
+                           }else if(this.props.location.state === "second add"){
+                               return this.addKanji2(this.props.user.user.user_id, +this.props.match.params.folder_id, k.references.kodansha)
+                           }else{
+                               return this.addKanji3(this.props.user.user.user_id, +this.props.match.params.folder_id, k.references.kodansha)
+                           }
+                            
+                       }} className = 'pics' src ={k.kanji.video.poster} alt = 'pic'/>
                         </div>
                         
                     

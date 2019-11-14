@@ -62,6 +62,8 @@ class FolderContent extends Component {
 
     
 
+    
+
 
     render() {
         const {allKanji} = this.state
@@ -73,7 +75,7 @@ class FolderContent extends Component {
         
         return (
             <div>
-               <Link to ={`/add_to_folder/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`}>Add</Link>
+               <Link  to={{pathname:`/add_to_folder/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`, state:this.props.location.state}}>Add</Link>
               {allKanji.length > 1 && kanjiCode.map((kc, i) => {
                 const code = allKanji.filter(kcc =>{
                     return kc.index_number === kcc.references.kodansha

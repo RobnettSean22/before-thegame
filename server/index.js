@@ -48,7 +48,7 @@ app.post('/api/studied_folder/:user_id', createFolderStudied)
 
 app.put('/api/studided_folder_update/:folder_id', updateFolderStudied)
 
-app.delete('/api/studied_delete/:folder_id', deleteFolderStudied)
+app.delete('/api/studied_delete/:user_id/:folder_id', deleteFolderStudied)
 
 // studtying folder 2222222****************************
 app.get('/api/get_studying_folder/:user_id', readStudyingFolder)
@@ -57,7 +57,7 @@ app.post('/api/studying_folder/:user_id', createFolderStudying)
 
 app.put('/api/studying_folder_update/:studying_id', updateFolderStudying)
 
-app.delete('/api/studying_delete/:studying_id', deleteFolderStudying)
+app.delete('/api/studying_delete/:user_id/:folder_id', deleteFolderStudying)
 
 // study folder 333333****************************
 app.get('/api/get_study_folder/:user_id', readStudyingFolder3)
@@ -66,7 +66,7 @@ app.post('/api/study_folder/:user_id', createFolderStudying3)
 
 app.put('/api/study_folder_update/:studying_id', updateFolderStudying3)
 
-app.delete('/api/study_delete/:studying_id', deleteFolderStudying3)
+app.delete('/api/study_delete/:user_id/:folder_id', deleteFolderStudying3)
 
 
 // add kanji in to studied folder *****************

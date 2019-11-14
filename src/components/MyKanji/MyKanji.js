@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {setUser} from '../../reducer/userReducer'
 import {Link} from 'react-router-dom'
 import './MyKanji.css'
+import AllKanji from '../AllKanji/AllKanji'
 
 
 class MyKanji extends Component {
@@ -53,6 +54,14 @@ class MyKanji extends Component {
         
     }
 
+    deleteFolderStudied(user_id,folder_id){
+        axios.delete(`/api/studied_delete/${user_id}/${folder_id}`).then(response => {
+            this.setState({
+                folders:response.data
+            })
+        })
+    }
+
     readStudyingFolder(user_id){
        
         axios.get(`/api/get_studying_folder/${user_id}`).then(response => {
@@ -77,6 +86,13 @@ class MyKanji extends Component {
             
         })
         
+    }
+    deleteFolderStudying(user_id, folder_id){
+        axios.delete(`/api/studying_delete/${user_id}/${folder_id}`).then(response => {
+            this.setState({
+                studying:response.data
+            })
+        })
     }
 
     readStudyingFolder3(user_id){
@@ -103,6 +119,17 @@ class MyKanji extends Component {
         
     }
 
+
+ 
+    deleteFolderStudying3(user_id,folder_id){
+        axios.delete(`/api/study_delete/${user_id}/${folder_id}`).then(response => {
+            this.setState({
+                study:response.data
+            })
+        })
+    }
+
+
     
 
     render() {
@@ -115,7 +142,8 @@ class MyKanji extends Component {
         const mapStudy = study.map(folder3 =>    {
             return(
                 <div key = {folder3.folder_id} >
-                <button><Link to = {`/folder_content/${this.props.user.user.user_id}/${folder3.folder_id}`}>{folder3.folder_name}</Link></button>               
+                <button><Link to = {{pathname: `/folder_content/${this.props.user.user.user_id}/${folder3.folder_id}`, state: "third add"}}>{folder3.folder_name}</Link></button>   
+                <button onClick = {(e) => this.deleteFolderStudying3(this.props.user.user.user_id, folder3.folder_id)}>Delete</button>            
             </div>
             )
         })
@@ -123,18 +151,20 @@ class MyKanji extends Component {
         const mapStudying = studying.map(folder2 => {
             return(
                 <div key = {folder2.folder_id} >
-                    <button><Link to = {`/folder_content/${this.props.user.user.user_id}/${folder2.folder_id}`}>{folder2.folder_name}</Link></button>               
+                    <button><Link to = {{pathname:`/folder_content/${this.props.user.user.user_id}/${folder2.folder_id}`, state: "second add"}}>{folder2.folder_name}</Link></button>  
+                    <button onClick = {(e) => this.deleteFolderStudying(this.props.user.user.user_id, folder2.folder_id)}>Delete</button>                         
                 </div>
             )
         })
         const mapFolderName = folders.map((folder) => {
             return (
                 <div key = {folder.folder_id} >
-                    <button><Link to = {`/folder_content/${this.props.user.user.user_id}/${folder.folder_id}`}>{folder.folder_name}</Link></button>               
+                    <div><Link to = {{pathname:`/folder_content/${this.props.user.user.user_id}/${folder.folder_id}`, state: "first add"}}>{folder.folder_name}</Link></div>    
+                    <button onClick = {(e) => this.deleteFolderStudied(this.props.user.user.user_id, folder.folder_id)}>Delete</button>           
                 </div>
             )
         })
-      
+       
         return (
             <div className = 'background2'>
                 <div className = 'containers studied1'>

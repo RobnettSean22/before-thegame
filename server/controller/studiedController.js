@@ -19,18 +19,18 @@ console.log(folderName)
     
     deleteFolderStudied : (req, res, next) => {
         const db = req.app.get('db')
-        const {folder_id} = req.params
-        db.delete_studied(folder_id).then((studied) => res.status(200).send(studied)).catch(err => {
+        console.log('delete_studied([user_id,folder_id])')
+        const {user_id,folder_id} = req.params
+        db.delete_studied([user_id,folder_id]).then((studied) => res.status(200).send(studied)).catch(err => {
             res.status(400).send({errorMessage:'did not delete'})
         })
     },
 
-    readFolder : (req, res, next) => {
+    readFolder : async (req, res, next) => {
         const db = req.app.get('db')
         const {user_id} = req.params
-        db.read_folder(user_id).then((studied) => res.status(200).send(studied)).catch(err => {
-            res.status(400).send({errorMessage:'cant read'})
-        })
+        const studied = await db.read_folder(user_id)
+            res.status(200).send(studied)
     }
 
     

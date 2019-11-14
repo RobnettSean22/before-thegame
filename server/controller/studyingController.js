@@ -19,8 +19,8 @@ module.exports = {
     
     deleteFolderStudying : (req, res, next) => {
         const db = req.app.get('db')
-        const {studying_id, folder_id} = req.params
-        db.delete_studying(studying_id, folder_id).then((studying) => res.status(200).send(studying)).catch(err => {
+        const {user_id, folder_id} = req.params
+        db.delete_studying(user_id, folder_id).then((studying) => res.status(200).send(studying)).catch(err => {
             res.status(400).send({errorMessage:'did not delete'})
         })
     },

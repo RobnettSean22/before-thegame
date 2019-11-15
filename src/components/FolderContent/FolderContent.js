@@ -66,6 +66,7 @@ class FolderContent extends Component {
 
 
     render() {
+        
         const {allKanji} = this.state
        
         const {kanjiCode} = this.state
@@ -84,7 +85,7 @@ class FolderContent extends Component {
                 const mapShit = code.map((fu,i) =>{
                     return(
                         <div  key = {i}>
-                        
+                        <label>Add To {}</label>
                         <div className = 'kanji-container'>
                             <div className = 'kanji'>
                                 <div className = 'character-container'>

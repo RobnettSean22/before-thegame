@@ -54,7 +54,7 @@ div .folders{
     border-right:1.25px solid black;
     border-top:1.2px solid black;
     border-radius: 5px;
-    
+    position: relative;
 
     /* border-radius:5px; */
     
@@ -62,7 +62,7 @@ div .folders{
 }
 
 div .folders:hover {
-    transform: scale(1.011);
+    /* transform: scale(1.211); */
     background:white;
     border-bottom: 1.25px solid black;
     border-left:1.25px solid black;
@@ -71,11 +71,17 @@ div .folders:hover {
     
 }
 
+div .folders:hover a, div .folders:hover .delete-icon {
+    transform: scale(1.211);
+    transition: .3s;
+}
+
 .delete-icon{
     align-self: flex-start;
-    position: relative;
+    position: absolute;
    
-    
+    right: 10px;
+    top: 10px;
 
 
     

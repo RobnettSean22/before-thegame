@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {setUser} from  '../../reducer/userReducer'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import './FolderContent.css'
+
 
 class FolderContent extends Component {
     constructor(props) {
@@ -76,7 +78,10 @@ class FolderContent extends Component {
         
         return (
             <div>
-               <Link  to={{pathname:`/add_to_folder/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`, state:this.props.location.state}}>Add</Link>
+                <div className = 'adk-container'>
+                    <button className = 'add-kanji-to-folder' ><Link className = 'kanji-add' to={{pathname:`/add_to_folder/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`, state:this.props.location.state}}>Add</Link></button>
+                </div>
+                <div className = 'folder-label-container'><h1 className = 'folder_label' >Folder Name</h1></div>
               {allKanji.length > 1 && kanjiCode.map((kc, i) => {
                 const code = allKanji.filter(kcc =>{
                     return kc.index_number === kcc.references.kodansha
@@ -85,32 +90,32 @@ class FolderContent extends Component {
                 const mapShit = code.map((fu,i) =>{
                     return(
                         <div  key = {i}>
-                        <label>Add To {}</label>
-                        <div className = 'kanji-container'>
-                            <div className = 'kanji'>
-                                <div className = 'character-container'>
+                        
+                        <div className = 'kanjicontainer'>
+                            <div className = 'kanji2'>
+                                <div className = 'charactercontainer'>
                                 
-                                <h1 className = 'character'>{fu.kanji.character}</h1>
+                                <h1 className = 'character2'>{fu.kanji.character}</h1>
                                 </div>
                             
-                                <div className = 'kana' >
+                                <div className = 'kana2' >
                                 
-                                <h2 className = 'kunyomi katahira' >KUN-YOMI: {fu.kanji.kunyomi.hiragana}</h2>
+                                <h2 className = 'kunyomi kata-hira' >KUN-YOMI: {fu.kanji.kunyomi.hiragana}</h2>
                                 
-                                <h2 className = 'onyomi katahira' >ON-YOMI: {fu.kanji.onyomi.katakana}</h2>
+                                <h2 className = 'onyomi kata-hira' >ON-YOMI: {fu.kanji.onyomi.katakana}</h2>
                                 
                                 
                                 </div>
                             </div>
                             
-                            <div className = 'pic-container'>
+                            <div className = 'piccontainer'>
                            <img  className = 'pics' src ={fu.kanji.video.poster} alt = 'pic'/>
                             </div>
                             
                         
                             
                             
-                            <div className = 'english-container' >
+                            <div className = 'englishcontainer' >
                             <h2 className = 'english' >English: {fu.kanji.meaning.english}</h2>
                             </div>
                             

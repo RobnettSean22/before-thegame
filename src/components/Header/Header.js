@@ -7,6 +7,7 @@ import KanjiHelp from '../KanjiHelp/KanjiHelp'
 import Login from '../Login/Login'
 import Signup from '../Signup/Signup'
 import FolderContent from '../FolderContent/FolderContent'
+import Study from '../Study/Study'
 import {connect} from 'react-redux'
 import {setUser} from '../../reducer/userReducer'
 import './Header.css'
@@ -67,6 +68,7 @@ class Header extends Component {
                     <Route exact path = '/add_to_folder/:user_id/:folder_id' component = {AllKanji}/>
                     <Route exact path = '/add2_to_folder/:user_id/:folder_id' component = {AllKanji}/>
                     <Route exact path = '/add3_to_folder/:user_id/:folder_id' component = {AllKanji}/>
+                    <Route exact path = '/study/:user_id/:folder_id' component = {Study}/>
                     
                   
                 

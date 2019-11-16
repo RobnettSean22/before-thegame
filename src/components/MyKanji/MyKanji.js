@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {setUser} from '../../reducer/userReducer'
 import {Link} from 'react-router-dom'
 import './MyKanji.css'
-import AllKanji from '../AllKanji/AllKanji'
+
 
 
 class MyKanji extends Component {

@@ -81,7 +81,12 @@ class FolderContent extends Component {
                 <div className = 'adk-container'>
                     <button className = 'add-kanji-to-folder' ><Link className = 'kanji-add' to={{pathname:`/add_to_folder/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`, state:this.props.location.state}}>Add</Link></button>
                 </div>
-                <div className = 'folder-label-container'><h1 className = 'folder_label' >Folder Name</h1></div>
+                <div className = 'folder-label-container'>
+                
+                    <h1 className = 'folder_label' >Folder Name</h1>
+                    <button className = 'study' ><Link className = 'kanji-add' to={`/study/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`}>Add</Link></button>
+                
+                </div>
               {allKanji.length > 1 && kanjiCode.map((kc, i) => {
                 const code = allKanji.filter(kcc =>{
                     return kc.index_number === kcc.references.kodansha

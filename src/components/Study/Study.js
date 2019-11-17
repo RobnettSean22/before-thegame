@@ -51,7 +51,7 @@ class Study extends Component {
     readKanji(user_id, folder_id) {
         axios.get(`/api/read_kanji/${user_id}/${folder_id}`).then(response => {
             this.setState({
-                kanjiCode:response.data
+                kCode1:response.data
             })
         })
     }
@@ -79,15 +79,33 @@ class Study extends Component {
     render() {
         
         const {allKanji} = this.state
-       console.log(allKanji)
+
         const {kCode1} = this.state
         const {kCode2} = this.state
         const {kCode3} = this.state
        
-        
         return (
             <div>
-               
+            {allKanji.length > 1 && kCode1.map((kc, i) => {
+                const code = allKanji.filter(kcc =>{
+                    return kc.index_number === kcc.references.kodansha
+                })
+                console.log(54616, code)
+                const filtercode = code.filter(answers => {
+                    return answers.kanji.meaning.english
+                })
+                console.log(filtercode)
+                const mapShit = filtercode.map((fu,i) =>{
+                    return(
+                        <div  key = {i}>
+                         <div>{fu.kanji.character}</div>
+                            {fu.kanji.meaning.english}
+                        </div>
+                    )
+                })
+                return mapShit
+        
+        })}
         
             </div>
         )

@@ -16,7 +16,9 @@ class Study extends Component {
             allKanji:[],
             kCode1:[],
             kCode2:[],
-            kCode3:[]
+            kCode3:[],
+            index :0,
+            answer: ''
             
         }
     }
@@ -79,34 +81,33 @@ class Study extends Component {
     render() {
         
         const {allKanji} = this.state
-
+        console.log(allKanji)
         const {kCode1} = this.state
+        console.log(kCode1)
         const {kCode2} = this.state
         const {kCode3} = this.state
        
+         
         return (
             <div>
-            {allKanji.length > 1 && kCode1.map((kc, i) => {
-                const code = allKanji.filter(kcc =>{
-                    return kc.index_number === kcc.references.kodansha
+            {allKanji.length > 1 && kCode1.map(refernce => {
+            
+                const akKey = allKanji.filter(connect =>{
+                 
+                    return refernce.index_number === connect.references.kodanasha 
                 })
-                console.log(54616, code)
-                const filtercode = code.filter(answers => {
-                    return answers.kanji.meaning.english
+                const mapCard = akKey.map((kanjiCard, index)=>{
+                   return(
+                    <div key = {kanjiCard[index]}>
+                        {kanjiCard[0].kanji.character}
+                        {kanjiCard[0].kanji.meaning.english}
+                        
+                    
+                    </div>
+                   )
                 })
-                console.log(filtercode)
-                const mapShit = filtercode.map((fu,i) =>{
-                    return(
-                        <div  key = {i}>
-                         <div>{fu.kanji.character}</div>
-                            {fu.kanji.meaning.english}
-                        </div>
-                    )
-                })
-                return mapShit
-        
-        })}
-        
+                return mapCard
+         })}  
             </div>
         )
     }

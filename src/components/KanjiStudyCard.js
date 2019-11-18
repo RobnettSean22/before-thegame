@@ -41,7 +41,23 @@ class KanjiStudyCard extends Component {
     //     card:this.props.all
     //     })
   }
+  ranProp() {}
 
+  match() {
+    const stuff = this.state.card[this.state.i][0].kanji.meaning.english
+      .split(",")
+      .map(a => {
+        return a.trim();
+      })
+      .filter(str => {
+        return str === this.state.answer;
+      });
+    if (stuff) {
+      this.setState({
+        i: this.state.i + 1
+      });
+    }
+  }
   // readKanji2(user_id, folder_id) {
   //     axios.get(`/api/read2_kanji/${user_id}/${folder_id}`).then(response => {
   //         this.setState({
@@ -66,10 +82,18 @@ class KanjiStudyCard extends Component {
     return (
       <div>
         {card.length > 0 && card[i][0].kanji.character}
+        {card.length > 0 && card[i][0].kanji.meaning.english}
         <input
           value={answer}
           onChange={e => this.setState({ answer: e.target.value })}
         />
+        <button
+          onClick={e =>
+            this.match(card[this.state.i][0].kanji.meaning.english, answer)
+          }
+        >
+          try
+        </button>
       </div>
     );
   }

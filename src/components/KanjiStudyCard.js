@@ -1,25 +1,86 @@
-// import React, { Component } from 'react'
+import React, { Component } from "react";
 
-// class KanjiStudyCard extends Component {
-//     constructor(props) {
-//         super(props)
+import { connect } from "react-redux";
+import { setUser } from "../reducer/userReducer";
+import axios from "axios";
 
-//         this.state = {
-//                  card: this.props.fu,
-//                  0: this.props.i
-//         }
-//     }
+class KanjiStudyCard extends Component {
+  constructor(props) {
+    super(props);
 
-//     render() {
-//         const {card, i} = this.state
-//         return (
-//             <div>
-                
+    this.state = {
+      card: [],
+      code1: [],
+      j: [],
+      kCode2: [],
+      kCode3: [],
+      index: 0,
+      answer: "",
+      i: 0
+    };
+  }
 
-//                 {card[0].kanji.character}
-//             </div>
-//         )
-//     }
-// }
+  componentDidMount() {
+    this.setState(() => {
+      // set state is async logic starts here
+      let card = this.props.cd1.map(ref => {
+        return this.props.all.filter(kcc => {
+          return ref.index_number === kcc.references.kodansha;
+        });
+      });
+      //   logic ends here
+      // object to merge into state
+      console.log(456, card);
+      return { card: card };
+    });
 
-// export default KanjiStudyCard
+    // this.readKanji2(this.props.user.user.user_id, this.props.folder_id)
+    // this.readKanji3(this.props.user.user.user_id, this.props.folder_id)
+
+    // this.setState({
+    //     card:this.props.all
+    //     })
+  }
+
+  // readKanji2(user_id, folder_id) {
+  //     axios.get(`/api/read2_kanji/${user_id}/${folder_id}`).then(response => {
+  //         this.setState({
+  //             kanjiCode2:response.data
+  //         })
+  //     })
+  // }
+  // readKanji3(user_id, folder_id) {
+  //     axios.get(`/api/read3_kanji/${user_id}/${folder_id}`).then(response => {
+  //         this.setState({
+  //             kanjiCode3:response.data
+  //         })
+  //     })
+  // }
+
+  render() {
+    const { card, i, answer } = this.state;
+
+    console.log(this.state.j);
+    console.log(this.state.card);
+    console.log(this.state.code1);
+    return (
+      <div>
+        {card.length > 0 && card[i][0].kanji.character}
+        <input
+          value={answer}
+          onChange={e => this.setState({ answer: e.target.value })}
+        />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return state;
+};
+
+const mapDispatchToProps = {
+  setUser
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(KanjiStudyCard);

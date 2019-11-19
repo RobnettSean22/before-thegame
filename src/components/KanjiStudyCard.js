@@ -11,13 +11,14 @@ class KanjiStudyCard extends Component {
     this.state = {
       card: [],
       code1: [],
-      j: [],
-      kCode2: [],
-      kCode3: [],
-      index: 0,
+      code2: [],
+      code3: [],
+      meaningVary: ["English", "kun-yomi", "on-yomi"],
+      correct: [],
       answer: "",
       i: 0
     };
+    this.rand = this.rand.bind(this);
   }
 
   componentDidMount() {
@@ -41,23 +42,50 @@ class KanjiStudyCard extends Component {
     //     card:this.props.all
     //     })
   }
-  ranProp() {}
 
-  match() {
-    const stuff = this.state.card[this.state.i][0].kanji.meaning.english
-      .split(",")
-      .map(a => {
-        return a.trim();
-      })
-      .filter(str => {
-        return str === this.state.answer;
+  match(answer) {
+    const english = this.state.card[this.state.i][0].kanji.meaning.english;
+
+    const kunyomi = this.state.card[this.state.i][0].kanji.kunyomi.romaji;
+
+    const onyomi = this.state.card[this.state.i][0].kanji.onyomi.romaji;
+
+    if (english === this.state.answer) {
+      this.setState({
+        i: this.state.i + 1
       });
-    if (stuff) {
+    } else if (kunyomi === this.state.answer) {
+      this.setState({
+        i: this.state.i + 1
+      });
+    } else if (onyomi === this.state.answer) {
       this.setState({
         i: this.state.i + 1
       });
     }
   }
+
+  rand() {
+    let change = [
+      this.state.card.length > 0 &&
+        this.state.card[this.state.i][0].kanji.meaning.english,
+      this.state.card.length > 0 &&
+        this.state.card[this.state.i][0].kanji.kunyomi.romaji,
+      this.state.card.length > 0 &&
+        this.state.card[this.state.i][0].kanji.onyomi.romaji
+    ];
+
+    let changed = change[Math.floor(Math.random() * change.length)];
+
+    if (changed === change[0]) {
+      return (changed = "english");
+    } else if (changed === change[1]) {
+      return (changed = "kunyomi");
+    } else {
+      return (changed = "onyomi");
+    }
+  }
+
   // readKanji2(user_id, folder_id) {
   //     axios.get(`/api/read2_kanji/${user_id}/${folder_id}`).then(response => {
   //         this.setState({
@@ -76,24 +104,20 @@ class KanjiStudyCard extends Component {
   render() {
     const { card, i, answer } = this.state;
 
-    console.log(this.state.j);
-    console.log(this.state.card);
-    console.log(this.state.code1);
+    // console.log(this.state.card);
+
+    // const keys = meaningVary[Math.floor(Math.random() * meaningVary.legnth)];
+    // console.log(keys);
+
     return (
       <div>
         {card.length > 0 && card[i][0].kanji.character}
-        {card.length > 0 && card[i][0].kanji.meaning.english}
+        {this.rand()}
         <input
           value={answer}
           onChange={e => this.setState({ answer: e.target.value })}
         />
-        <button
-          onClick={e =>
-            this.match(card[this.state.i][0].kanji.meaning.english, answer)
-          }
-        >
-          try
-        </button>
+        <button onClick={e => this.match(answer)}>try</button>
       </div>
     );
   }

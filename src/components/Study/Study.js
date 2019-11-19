@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { setUser } from "../../reducer/userReducer";
 import axios from "axios";
 import KanjiStudyCard from "../KanjiStudyCard";
-import AllKanji from "../AllKanji/AllKanji";
 
 class Study extends Component {
   constructor(props) {
@@ -12,7 +11,9 @@ class Study extends Component {
 
     this.state = {
       allKanji: [],
-      kCode1: []
+      kCode1: [],
+      kCode2: [],
+      kCode3: []
     };
   }
 
@@ -22,6 +23,8 @@ class Study extends Component {
       this.props.user.user.user_id,
       this.props.match.params.folder_id
     );
+    this.readKanji2(this.props.user.user.user_id, this.props.folder_id);
+    this.readKanji3(this.props.user.user.user_id, this.props.folder_id);
   }
 
   readAllKanji() {
@@ -53,8 +56,23 @@ class Study extends Component {
     });
   }
 
+  readKanji2(user_id, folder_id) {
+    axios.get(`/api/read2_kanji/${user_id}/${folder_id}`).then(response => {
+      this.setState({
+        kCode2: this.shuffle(response.data)
+      });
+    });
+  }
+  readKanji3(user_id, folder_id) {
+    axios.get(`/api/read3_kanji/${user_id}/${folder_id}`).then(response => {
+      this.setState({
+        kCode3: this.shuffle(response.data)
+      });
+    });
+  }
+
   render() {
-    const { allKanji, kCode1 } = this.state;
+    const { allKanji, kCode1, kCode2, kCode3 } = this.state;
     console.log(allKanji);
     console.log(kCode1);
     // const {kCode1} = this.state
@@ -63,7 +81,13 @@ class Study extends Component {
     return (
       <div>
         {allKanji.length > 1 && (
-          <KanjiStudyCard all={allKanji} cd1={kCode1} shuf={this.shuffle} />
+          <KanjiStudyCard
+            all={allKanji}
+            cd1={kCode1}
+            cd2={kCode2}
+            cd3={kCode3}
+            shuf={this.shuffle}
+          />
         )}
       </div>
     );

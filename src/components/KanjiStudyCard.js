@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { setUser } from "../reducer/userReducer";
-import axios from "axios";
 
 class KanjiStudyCard extends Component {
   constructor(props) {
@@ -22,21 +21,47 @@ class KanjiStudyCard extends Component {
   }
 
   componentDidMount() {
-    this.setState(() => {
-      // set state is async logic starts here
-      let card = this.props.cd1.map(ref => {
-        return this.props.all.filter(kcc => {
-          return ref.index_number === kcc.references.kodansha;
+    //figure out conditions to render
+    if (this.props.cd1) {
+      this.setState(() => {
+        // set state is async logic starts here
+        let card = this.props.cd1.map(ref => {
+          return this.props.all.filter(kcc => {
+            return ref.index_number === kcc.references.kodansha;
+          });
         });
+        //   logic ends here
+        // object to merge into state
+        console.log(456, card);
+        return { card: card };
       });
-      //   logic ends here
-      // object to merge into state
-      console.log(456, card);
-      return { card: card };
-    });
-
-    // this.readKanji2(this.props.user.user.user_id, this.props.folder_id)
-    // this.readKanji3(this.props.user.user.user_id, this.props.folder_id)
+    } else if (this.props.cd2) {
+      this.setState(() => {
+        // set state is async logic starts here
+        let card = this.props.cd2.map(ref => {
+          return this.props.all.filter(kcc => {
+            return ref.index_number === kcc.references.kodansha;
+          });
+        });
+        //   logic ends here
+        // object to merge into state
+        console.log(456, card);
+        return { card: card };
+      });
+    } else {
+      this.setState(() => {
+        // set state is async logic starts here
+        let card = this.props.cd3.map(ref => {
+          return this.props.all.filter(kcc => {
+            return ref.index_number === kcc.references.kodansha;
+          });
+        });
+        //   logic ends here
+        // object to merge into state
+        console.log(456, card);
+        return { card: card };
+      });
+    }
 
     // this.setState({
     //     card:this.props.all
@@ -86,21 +111,6 @@ class KanjiStudyCard extends Component {
     }
   }
 
-  // readKanji2(user_id, folder_id) {
-  //     axios.get(`/api/read2_kanji/${user_id}/${folder_id}`).then(response => {
-  //         this.setState({
-  //             kanjiCode2:response.data
-  //         })
-  //     })
-  // }
-  // readKanji3(user_id, folder_id) {
-  //     axios.get(`/api/read3_kanji/${user_id}/${folder_id}`).then(response => {
-  //         this.setState({
-  //             kanjiCode3:response.data
-  //         })
-  //     })
-  // }
-
   render() {
     const { card, i, answer } = this.state;
 
@@ -109,10 +119,11 @@ class KanjiStudyCard extends Component {
     // const keys = meaningVary[Math.floor(Math.random() * meaningVary.legnth)];
     // console.log(keys);
 
+    //this.rand ask about*****************************
     return (
       <div>
         {card.length > 0 && card[i][0].kanji.character}
-        {this.rand()}
+        <div onChange={e => this.rand()}></div>
         <input
           value={answer}
           onChange={e => this.setState({ answer: e.target.value })}

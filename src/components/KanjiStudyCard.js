@@ -12,8 +12,9 @@ class KanjiStudyCard extends Component {
       code1: [],
       code2: [],
       code3: [],
-      meaningVary: ["English", "kun-yomi", "on-yomi"],
-      correct: [],
+      meaningVary: [],
+      whatToinput: ["English", "kun-yomi", "on-yomi"],
+      wi: 0,
       answer: "",
       i: 0
     };
@@ -35,34 +36,7 @@ class KanjiStudyCard extends Component {
         console.log(456, card);
         return { card: card };
       });
-    } else if (this.props.cd2) {
-      this.setState(() => {
-        // set state is async logic starts here
-        let card = this.props.cd2.map(ref => {
-          return this.props.all.filter(kcc => {
-            return ref.index_number === kcc.references.kodansha;
-          });
-        });
-        //   logic ends here
-        // object to merge into state
-        console.log(456, card);
-        return { card: card };
-      });
-    } else {
-      this.setState(() => {
-        // set state is async logic starts here
-        let card = this.props.cd3.map(ref => {
-          return this.props.all.filter(kcc => {
-            return ref.index_number === kcc.references.kodansha;
-          });
-        });
-        //   logic ends here
-        // object to merge into state
-        console.log(456, card);
-        return { card: card };
-      });
     }
-
     // this.setState({
     //     card:this.props.all
     //     })
@@ -88,31 +62,48 @@ class KanjiStudyCard extends Component {
         i: this.state.i + 1
       });
     }
+    this.rand();
   }
 
   rand() {
-    let change = [
+    const enGlish =
       this.state.card.length > 0 &&
-        this.state.card[this.state.i][0].kanji.meaning.english,
+      this.state.card[this.state.i][0].kanji.meaning.english;
+
+    const kunYomi =
       this.state.card.length > 0 &&
-        this.state.card[this.state.i][0].kanji.kunyomi.romaji,
+      this.state.card[this.state.i][0].kanji.kunyomi.romaji;
+    const onYomi =
       this.state.card.length > 0 &&
-        this.state.card[this.state.i][0].kanji.onyomi.romaji
-    ];
+      this.state.card[this.state.i][0].kanji.onyomi.romaji;
+    let change = [enGlish, kunYomi, onYomi];
 
     let changed = change[Math.floor(Math.random() * change.length)];
 
-    if (changed === change[0]) {
-      return (changed = "english");
-    } else if (changed === change[1]) {
-      return (changed = "kunyomi");
+    // if (changed === enGlish) {
+    //   return this.state.whatToinput[this.state.wi];
+    // } else if (changed === kunYomi) {
+    //   return this.state.whatToinput[this.state.wi + 1];
+    // } else {
+    //   return this.state.whatToinput[this.state.wi + 2];
+    // }
+    if (changed === enGlish) {
+      this.setState({
+        wi: 0
+      });
+    } else if (changed === kunYomi) {
+      this.setState({
+        wi: 1
+      });
     } else {
-      return (changed = "onyomi");
+      this.setState({
+        wi: 2
+      });
     }
   }
 
   render() {
-    const { card, i, answer } = this.state;
+    const { card, i, answer, whatToinput, wi } = this.state;
 
     // console.log(this.state.card);
 
@@ -123,12 +114,18 @@ class KanjiStudyCard extends Component {
     return (
       <div>
         {card.length > 0 && card[i][0].kanji.character}
-        <div onChange={e => this.rand()}></div>
+        <div>{whatToinput[wi]}</div>
         <input
           value={answer}
           onChange={e => this.setState({ answer: e.target.value })}
         />
-        <button onClick={e => this.match(answer)}>try</button>
+        <button
+          onClick={() => {
+            this.match(answer);
+          }}
+        >
+          try
+        </button>
       </div>
     );
   }

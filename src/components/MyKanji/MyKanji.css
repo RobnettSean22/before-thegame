@@ -10,11 +10,7 @@ body {
   margin: -3.7% 0 0 0;
   overflow: hidden;
 }
-.spinner {
-  width: 20%;
-  height: 20%;
-  margin: 0 auto;
-}
+
 .all_containers {
   width: 100%;
   height: 130vh;
@@ -22,6 +18,31 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+}
+.spinner-container {
+  width: 100%;
+  height: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner {
+  width: 26%;
+  height: 100%;
+  margin: 0% 0% 1% 3.5%;
+  opacity: 0.05;
+  animation-name: spin;
+  animation-duration: 90000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .heads {
   width: 100%;
@@ -88,7 +109,7 @@ div .folders:hover {
 div .folders:hover a,
 div .folders:hover .delete-icon {
   transform: scale(1.211);
-  transition: 0.3s;
+  transition: 1s;
   text-decoration: none;
 }
 
@@ -110,11 +131,12 @@ div .folders:hover .delete-icon {
 
 .create {
   width: 40%;
-  height: 10%;
+  height: 15%;
   margin-top: 10%;
   border-radius: 5px;
   color: #ff0b0b;
   font-weight: bold;
+  font-size: 20px;
   background: rgb(249, 249, 249);
 }
 
@@ -130,12 +152,12 @@ div .folders:hover .delete-icon {
   position: absolute;
   opacity: 0;
   top: 0;
-  right: -20px;
+  right: -25px;
   transition: 0.5s;
 }
 
 .create:hover span {
-  padding-right: 10px;
+  padding-right: 15px;
 }
 
 .create:hover span:after {
@@ -147,8 +169,8 @@ div .folders:hover .delete-icon {
   outline-style: groove;
   outline-width: 3px;
 }
-button .link {
-  padding: 1.37em 7.5em;
+.link {
+  padding: 1.37em 8.5em;
   text-decoration: none;
   color: black;
 }

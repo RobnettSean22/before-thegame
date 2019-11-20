@@ -199,8 +199,10 @@ class MyKanji extends Component {
 
     return (
       <div className="background2">
-        <img className="spinner" src={spinner} alt="spin" />
         <div className="all_containers">
+          <div className="spinner-container">
+            <img className="spinner" src={spinner} alt="spin" />
+          </div>
           <div className="heads">
             <h1 className="container-heads">Kanji I Know</h1>
             <h1>Kanji I'm Learning</h1>

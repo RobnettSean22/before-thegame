@@ -139,9 +139,7 @@ class MyKanji extends Component {
                 folder3.folder_id
               )
             }
-          >
-            Delete
-          </button>
+          ></button>
         </div>
       );
     });
@@ -152,7 +150,7 @@ class MyKanji extends Component {
           <Link
             className="link"
             to={{
-              pathname: `/folder_content/${this.props.user.user.user_id}/${folder2.folder_id}`,
+              pathname: `/folder_content/${this.props.user.user.user_id}/${folder2.folder_id}/`,
               state: "second add"
             }}
           >
@@ -192,9 +190,7 @@ class MyKanji extends Component {
                 folder.folder_id
               )
             }
-          >
-            Delete
-          </button>
+          ></button>
         </div>
       );
     });
@@ -214,7 +210,7 @@ class MyKanji extends Component {
                 )
               }
             >
-              Create folder
+              New Folder
             </button>
             <input
               value={folderName}
@@ -233,8 +229,9 @@ class MyKanji extends Component {
                 )
               }
             >
-              Creat folder
+              New Folder
             </button>
+
             <input
               value={studyingName}
               onChange={e => this.setState({ studyingName: e.target.value })}
@@ -252,7 +249,7 @@ class MyKanji extends Component {
                 )
               }
             >
-              Create folder
+              New Folder
             </button>
             <input
               value={studyName}

@@ -105,7 +105,7 @@ class AllKanji extends Component {
                 <img className="pics" src={k.kanji.video.poster} alt="pic" />
               </div>
 
-              <div className="english-container">
+              <div className="englishContainer">
                 <h2 className="english">English: {k.kanji.meaning.english}</h2>
                 <button
                   className={this.props.user.user ? "show" : "hide"}

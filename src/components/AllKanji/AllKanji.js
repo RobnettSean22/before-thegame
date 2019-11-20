@@ -90,13 +90,13 @@ class AllKanji extends Component {
                   <h1 className="character">{k.kanji.character}</h1>
                 </div>
 
-                <div className="kana">
-                  <h2 className="kunyomi katahira">
-                    KUN-YOMI: {k.kanji.kunyomi.hiragana}
+                <div className="kana2">
+                  <h2 className="kunyomi ">
+                    KUN<span>-</span>YOMI: {k.kanji.kunyomi.hiragana}
                   </h2>
 
-                  <h2 className="onyomi katahira">
-                    ON-YOMI: {k.kanji.onyomi.katakana}
+                  <h2 className="onyomi ">
+                    ON<span>-</span>YOMI: {k.kanji.onyomi.katakana}
                   </h2>
                 </div>
               </div>

@@ -18,19 +18,24 @@ class FolderContent extends Component {
     };
   }
   componentDidMount() {
-    this.readAllKanji();
-    this.readKanji(
-      this.props.user.user.user_id,
-      +this.props.match.params.folder_id
-    );
-    this.readKanji2(
-      this.props.user.user.user_id,
-      +this.props.match.params.folder_id
-    );
-    this.readKanji3(
-      this.props.user.user.user_id,
-      +this.props.match.params.folder_id
-    );
+    if (!this.props.user.user) {
+      this.props.history.push("/login/");
+    } else {
+      this.readAllKanji();
+
+      this.readKanji(
+        this.props.user.user.user_id,
+        +this.props.match.params.folder_id
+      );
+      this.readKanji2(
+        this.props.user.user.user_id,
+        +this.props.match.params.folder_id
+      );
+      this.readKanji3(
+        this.props.user.user.user_id,
+        +this.props.match.params.folder_id
+      );
+    }
   }
 
   readAllKanji() {
@@ -90,10 +95,10 @@ class FolderContent extends Component {
           <h1 className="folder_label">Folder Name</h1>
           <button className="study">
             <Link
-              className="kanji-add"
+              className="quiz"
               to={`/study/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`}
             >
-              Add
+              Study
             </Link>
           </button>
         </div>
@@ -117,7 +122,7 @@ class FolderContent extends Component {
                           KUN-YOMI: {fu.kanji.kunyomi.hiragana}
                         </h2>
 
-                        <h2 className="onyomi katahira">
+                        <h2 className="onyomi2 katahira">
                           ON-YOMI: {fu.kanji.onyomi.katakana}
                         </h2>
                       </div>
@@ -162,7 +167,7 @@ class FolderContent extends Component {
                           KUN-YOMI: {fu.kanji.kunyomi.hiragana}
                         </h2>
 
-                        <h2 className="onyomi katahira">
+                        <h2 className="onyomi2 katahira">
                           ON-YOMI: {fu.kanji.onyomi.katakana}
                         </h2>
                       </div>
@@ -207,7 +212,7 @@ class FolderContent extends Component {
                           KUN-YOMI: {fu.kanji.kunyomi.hiragana}
                         </h2>
 
-                        <h2 className="onyomi katahira">
+                        <h2 className="onyomi2 katahira">
                           ON-YOMI: {fu.kanji.onyomi.katakana}
                         </h2>
                       </div>

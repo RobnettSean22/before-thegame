@@ -75,19 +75,60 @@ div .folders:hover .delete-icon {
 }
 
 .delete-icon {
+  width: 8%;
+  height: 64%;
+  color: #fa7e7e;
   align-self: flex-start;
   position: absolute;
 
   right: 10px;
-  top: 10px;
+  top: 2px;
+}
+
+.delete-icon:hover {
+  cursor: crosshair;
+  color: #ff2525;
 }
 
 .create {
-  width: 33%;
-  height: 16%;
+  width: 40%;
+  height: 10%;
   margin-top: 10%;
+  border-radius: 5px;
+  color: #ff0b0b;
+  font-weight: bold;
+  background: rgb(249, 249, 249);
 }
 
+.create span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.create span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.create:hover span {
+  padding-right: 10px;
+}
+
+.create:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.create:focus {
+  outline-color: #ff0b0b;
+  outline-style: groove;
+  outline-width: 3px;
+}
 button .link {
   padding: 1.37em 7.5em;
   text-decoration: none;

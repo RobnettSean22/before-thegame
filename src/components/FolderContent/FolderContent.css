@@ -41,17 +41,15 @@
   font-size: 85px;
 }
 .kana {
+  width: 50%;
   height: 100%;
   flex-direction: column;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.katahira {
-  margin: 0%;
-}
-.kunyomi {
-  margin: 0% 0% 0% 0%;
+.onyomi2 {
+  margin-left: 5.9%;
 }
 .pic-container {
   width: 33%;
@@ -96,7 +94,23 @@ div .folder-label-container {
 
 .kanji-add {
   font-size: 24px;
-  padding: 0.23em 1.73em;
+  padding: 0.23em;
+  padding-left: 1.3em;
+  padding-right: 1.3em;
   text-decoration: none;
   color: black;
+  text-align: center;
+}
+.quiz {
+  font-size: 24px;
+  padding: 0.23em;
+  padding-left: 1.3em;
+  padding-right: 1.3em;
+  text-decoration: none;
+  color: black;
+}
+.study {
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 1%;
 }

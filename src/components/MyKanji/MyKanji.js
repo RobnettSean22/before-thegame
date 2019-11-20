@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { setUser } from "../../reducer/userReducer";
 import { Link } from "react-router-dom";
+import { FaGhost } from "react-icons/fa";
 import "./MyKanji.css";
 
 class MyKanji extends Component {
@@ -131,7 +132,7 @@ class MyKanji extends Component {
             {folder3.folder_name}
           </Link>
 
-          <button
+          <FaGhost
             className="delete-icon"
             onClick={e =>
               this.deleteFolderStudying3(
@@ -139,7 +140,7 @@ class MyKanji extends Component {
                 folder3.folder_id
               )
             }
-          ></button>
+          />
         </div>
       );
     });
@@ -157,7 +158,7 @@ class MyKanji extends Component {
             {folder2.folder_name}
           </Link>
 
-          <button
+          <FaGhost
             className="delete-icon"
             onClick={e =>
               this.deleteFolderStudying(
@@ -165,7 +166,7 @@ class MyKanji extends Component {
                 folder2.folder_id
               )
             }
-          ></button>
+          />
         </div>
       );
     });
@@ -182,7 +183,7 @@ class MyKanji extends Component {
             {folder.folder_name}
           </Link>
 
-          <button
+          <FaGhost
             className="delete-icon"
             onClick={e =>
               this.deleteFolderStudied(
@@ -190,7 +191,7 @@ class MyKanji extends Component {
                 folder.folder_id
               )
             }
-          ></button>
+          />
         </div>
       );
     });
@@ -210,7 +211,7 @@ class MyKanji extends Component {
                 )
               }
             >
-              New Folder
+              <span>New Folder</span>
             </button>
             <input
               value={folderName}
@@ -229,7 +230,7 @@ class MyKanji extends Component {
                 )
               }
             >
-              New Folder
+              <span>New Folder</span>
             </button>
 
             <input
@@ -249,7 +250,7 @@ class MyKanji extends Component {
                 )
               }
             >
-              New Folder
+              <span>New Folder</span>
             </button>
             <input
               value={studyName}

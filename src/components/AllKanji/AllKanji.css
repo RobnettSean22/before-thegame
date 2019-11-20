@@ -40,19 +40,18 @@
 .character {
   font-size: 85px;
 }
-.kana {
+.kana2 {
+  width: 50%;
   height: 100%;
   flex-direction: column;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.katahira {
-  margin: 0%;
+.onyomi {
+  margin-left: 5.9%;
 }
-.kunyomi {
-  margin: 0% 0% 0% 0%;
-}
+
 .pic-container {
   width: 33%;
   height: 100%;

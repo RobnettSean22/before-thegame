@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { setUser } from "../../reducer/userReducer";
 import { Link } from "react-router-dom";
 import { FaGhost } from "react-icons/fa";
+import spinner from "./spinner.png";
 import "./MyKanji.css";
 
 class MyKanji extends Component {
@@ -198,64 +199,74 @@ class MyKanji extends Component {
 
     return (
       <div className="background2">
+        <img className="spinner" src={spinner} alt="spin" />
         <div className="all_containers">
-          <div className="containers studied1">
-            {mapFolderName}
-
-            <button
-              className="create"
-              onClick={e =>
-                this.createFolderStudied(
-                  this.props.user.user.user_id,
-                  folderName
-                )
-              }
-            >
-              <span>New Folder</span>
-            </button>
-            <input
-              value={folderName}
-              onChange={e => this.setState({ folderName: e.target.value })}
-            />
+          <div className="heads">
+            <h1 className="container-heads">Kanji I Know</h1>
+            <h1>Kanji I'm Learning</h1>
+            <h1>Kanji I'll Learn</h1>
           </div>
-          <div className="containers studying2">
-            {mapStudying}
+          <div className="contained">
+            <div className="containers studied1">
+              {mapFolderName}
 
-            <button
-              className="create"
-              onClick={e =>
-                this.createFolderStudying(
-                  this.props.user.user.user_id,
-                  studyingName
-                )
-              }
-            >
-              <span>New Folder</span>
-            </button>
+              <button
+                className="create"
+                onClick={e =>
+                  this.createFolderStudied(
+                    this.props.user.user.user_id,
+                    folderName
+                  )
+                }
+              >
+                <span>New Folder</span>
+              </button>
+              <input
+                value={folderName}
+                onChange={e => this.setState({ folderName: e.target.value })}
+              />
+            </div>
 
-            <input
-              value={studyingName}
-              onChange={e => this.setState({ studyingName: e.target.value })}
-            />
-          </div>
-          <div className="containers study3">
-            {mapStudy}
+            <div className="containers studying2">
+              {mapStudying}
 
-            <button
-              className="create"
-              onClick={e =>
-                this.createFolderStudying3(
-                  this.props.user.user.user_id,
-                  studyName
-                )
-              }
-            >
-              <span>New Folder</span>
-            </button>
-            <input
-              value={studyName}
-              onChange={e => this.setState({ studyName: e.target.value })}
-            />
+              <button
+                className="create"
+                onClick={e =>
+                  this.createFolderStudying(
+                    this.props.user.user.user_id,
+                    studyingName
+                  )
+                }
+              >
+                <span>New Folder</span>
+              </button>
+
+              <input
+                value={studyingName}
+                onChange={e => this.setState({ studyingName: e.target.value })}
+              />
+            </div>
+
+            <div className="containers study3">
+              {mapStudy}
+
+              <button
+                className="create"
+                onClick={e =>
+                  this.createFolderStudying3(
+                    this.props.user.user.user_id,
+                    studyName
+                  )
+                }
+              >
+                <span>New Folder</span>
+              </button>
+              <input
+                value={studyName}
+                onChange={e => this.setState({ studyName: e.target.value })}
+              />
+            </div>
           </div>
         </div>
       </div>

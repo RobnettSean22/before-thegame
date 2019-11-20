@@ -3,24 +3,43 @@ body {
 }
 
 .background2 {
-  width: 96%;
-  height: 100vh;
-  background-image: url(my_kanji-background4.png);
+  width: 101%;
+  height: 102vh;
+  background-image: url(rising_sun.png);
   background-size: cover;
   margin: -3.7% 0 0 0;
+  overflow: hidden;
 }
-
+.spinner {
+  width: 20%;
+  height: 20%;
+  margin: 0 auto;
+}
 .all_containers {
   width: 100%;
-  height: 143vh;
+  height: 130vh;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.heads {
+  width: 100%;
+
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+}
+.contained {
+  width: 100%;
+  height: 25.6%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 19%;
 }
 
 .containers {
-  width: 19.6%;
-  height: 28%;
+  width: 30%;
+  height: 100%;
   border-top: 2.5px solid black;
   border-left: 2.3px solid black;
   border-right: 2.3px solid black;
@@ -81,7 +100,7 @@ div .folders:hover .delete-icon {
   position: absolute;
 
   right: 10px;
-  top: 2px;
+  top: 4px;
 }
 
 .delete-icon:hover {

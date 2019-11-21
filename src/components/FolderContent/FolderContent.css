@@ -91,6 +91,9 @@ div .folder-label-container {
   border-radius: 5px;
   margin-right: 3%;
 }
+.add-kanji-to-folder:hover {
+  border: 3px solid #ff2525;
+}
 
 .kanji-add {
   font-size: 24px;
@@ -100,6 +103,10 @@ div .folder-label-container {
   text-decoration: none;
   color: black;
   text-align: center;
+}
+.kanji-add:hover {
+  color: #ff2525;
+  text-decoration: none;
 }
 .quiz {
   font-size: 24px;
@@ -113,4 +120,23 @@ div .folder-label-container {
   text-align: center;
   border-radius: 5px;
   margin-bottom: 1%;
+}
+.quiz:hover {
+  text-decoration: none;
+  color: #ff2525;
+}
+
+.study:hover {
+  border: 3px solid #ff2525;
+}
+
+.delete-kanji {
+  width: 8%;
+  height: 30%;
+  color: #fa7e7e;
+}
+
+.delete-kanji:hover {
+  cursor: crosshair;
+  color: #ff2525;
 }

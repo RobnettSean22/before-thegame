@@ -80,7 +80,7 @@ app.get("/api/get_folder/:user_id", readFolder);
 
 app.post("/api/studied_folder/:user_id", createFolderStudied);
 
-app.put("/api/studided_folder_update/:folder_id", updateFolderStudied);
+app.put("/api/studied_folder_update/:user_id/:folder_id/", updateFolderStudied);
 
 app.delete("/api/studied_delete/:user_id/:folder_id", deleteFolderStudied);
 

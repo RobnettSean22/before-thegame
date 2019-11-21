@@ -7,6 +7,8 @@ import { FaGhost } from "react-icons/fa";
 import spinner from "./spinner.png";
 import "./MyKanji.css";
 
+import Popup from "reactjs-popup";
+
 class MyKanji extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,8 @@ class MyKanji extends Component {
       study: [],
       studyName: "",
       folders: [],
-      folderName: ""
+      folderName: "",
+      folderName2: ""
     };
   }
 
@@ -36,6 +39,18 @@ class MyKanji extends Component {
     this.setState({
       folders: response.data
     });
+  }
+
+  updateFolderStudied(user_id, folder_id, folder_name) {
+    axios
+      .put(`/api/studied_folder_update/${user_id}/${folder_id}/`, {
+        folder_name
+      })
+      .then(response => {
+        this.setState({
+          folders: response.data
+        });
+      });
   }
 
   createFolderStudied(user_id, folderName) {
@@ -115,7 +130,7 @@ class MyKanji extends Component {
   }
 
   render() {
-    const { folderName } = this.state;
+    const { folderName, folderName2 } = this.state;
     const { folders } = this.state;
     const { studying, studyingName } = this.state;
     const { study, studyName } = this.state;
@@ -174,6 +189,27 @@ class MyKanji extends Component {
     const mapFolderName = folders.map(folder => {
       return (
         <div className="folders" key={folder.folder_id}>
+          <Popup
+            className="update"
+            trigger={<button></button>}
+            position="left top"
+          >
+            <div>
+              <input
+                value={folderName2}
+                onChange={e => this.setState({ folderName2: e.target.value })}
+              />
+              <button
+                onClick={e =>
+                  this.updateFolderStudied(
+                    this.props.user.user.user_id,
+                    folder.folder_id,
+                    folder.folder_name
+                  )
+                }
+              ></button>
+            </div>
+          </Popup>
           <Link
             className="link"
             to={{
@@ -204,13 +240,13 @@ class MyKanji extends Component {
             <img className="spinner" src={spinner} alt="spin" />
           </div>
           <div className="heads">
-            <h1 className="container-heads">
-              Ka<span className="n-red">n</span>ji I Know
+            <h1 className="iknow k">
+              Ka<span className=" n-red">n</span>ji I Know
             </h1>
-            <h1>
+            <h1 className="ilearn k">
               Ka<span className="n-red">n</span>ji I'm Learning
             </h1>
-            <h1>
+            <h1 className="ilearning k">
               Ka<span className="n-red">n</span>ji I'll Learn
             </h1>
           </div>

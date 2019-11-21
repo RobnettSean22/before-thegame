@@ -158,7 +158,7 @@ class KanjiStudyCard extends Component {
           >
             <button className="fire">Fire Away</button>
             <input
-              className="animalf"
+              className="animal"
               value={answer}
               onChange={e => this.setState({ answer: e.target.value })}
             />

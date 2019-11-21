@@ -1,6 +1,6 @@
 UPDATE studied
 
-SET folder_name = $2
+SET folder_name = $3
 
-WHERE folder_id = $1;
+WHERE user_id = $1 AND folder_id = $2;
 

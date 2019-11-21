@@ -53,7 +53,7 @@ class Header extends Component {
       <div>
         <header className="nav">
           <div className="logo">
-            <img src={Logo} alt="Logo" />
+            <img className="lego" src={Logo} alt="Logo" />
           </div>
           <div className="navlinks">
             <NavLink className="direct" activeClassName="active" exact to="/">

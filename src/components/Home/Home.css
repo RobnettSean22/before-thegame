@@ -56,3 +56,10 @@ textarea:focus {
 button:focus {
   outline: none;
 }
+
+.kanjinme {
+  font-size: 114px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 3%;
+}

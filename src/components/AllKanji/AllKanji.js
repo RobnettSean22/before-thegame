@@ -156,8 +156,14 @@ class AllKanji extends Component {
       <div>
         <ToastContainer />
         <div className="search-input-container">
-          <button onClick={e => this.done()}>Finished</button>
+          <button
+            className={this.props.user.user ? "alive" : "dead"}
+            onClick={e => this.done()}
+          >
+            Finished
+          </button>
           <input
+            type="text"
             className="search-input"
             value={search}
             onChange={e => this.setState({ search: e.target.value })}

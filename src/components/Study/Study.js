@@ -3,8 +3,7 @@ import Rapid from "../Rapid";
 import { connect } from "react-redux";
 import { setUser } from "../../reducer/userReducer";
 import axios from "axios";
-import KanjiStudyCard from "../KanjiStudyCard";
-
+import KanjiStudyCard from "../KanjiStudyCard/KanjiStudyCard";
 class Study extends Component {
   constructor(props) {
     super(props);

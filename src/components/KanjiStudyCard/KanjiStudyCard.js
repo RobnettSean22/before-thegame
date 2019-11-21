@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
-import { setUser } from "../reducer/userReducer";
+import { setUser } from "../../reducer/userReducer";
+import "./KanjiStudyCard.css";
 
 class KanjiStudyCard extends Component {
   constructor(props) {
@@ -138,22 +139,30 @@ class KanjiStudyCard extends Component {
     const { card, i, answer, whatToinput, wi } = this.state;
 
     return (
-      <div>
+      <div className="backside">
         <ToastContainer />
-        {card.length > 0 && card[i][0].kanji.character}
-        <div>{whatToinput[wi]}</div>
-        <input
-          value={answer}
-          onChange={e => this.setState({ answer: e.target.value })}
-        />
+        <div className="study-this">
+          <div className="study-this-kanji">
+            {card.length > 0 && card[i][0].kanji.character}
+          </div>
+        </div>
+        <div className="test">
+          <div className="testing">{whatToinput[wi]}</div>
+        </div>
+        <div className="user-answer">
+          <input
+            value={answer}
+            onChange={e => this.setState({ answer: e.target.value })}
+          />
 
-        <button
-          onClick={() => {
-            this.match(answer);
-          }}
-        >
-          try
-        </button>
+          <button
+            onClick={() => {
+              this.match(answer);
+            }}
+          >
+            try
+          </button>
+        </div>
       </div>
     );
   }

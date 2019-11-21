@@ -174,3 +174,7 @@ div .folders:hover .delete-icon {
   text-decoration: none;
   color: black;
 }
+
+.n-red {
+  color: #ff0b0b;
+}

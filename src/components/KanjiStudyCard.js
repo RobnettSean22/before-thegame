@@ -85,10 +85,11 @@ class KanjiStudyCard extends Component {
       this.setState({
         i: this.state.i + 1
       });
-    } else if (this.state.card.length === undefined) {
-      this.setState({
-        i: 0
-      });
+    } else if (this.state.card[this.state.card.length - 1]) {
+      // this.setState({
+      //   i: 0
+      // });
+      console.log(5611615);
     }
     this.notify();
     this.rand();

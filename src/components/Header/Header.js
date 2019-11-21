@@ -64,18 +64,18 @@ class Header extends Component {
               activeClassName="active"
               to="/all_kanji"
             >
-              All Ka<span>n</span>ji
+              All Ka<span className="red-n">n</span>ji
             </NavLink>
             <NavLink className="direct" activeClassName="active" to="/my_kanji">
               {" "}
-              My Ka<span>n</span>ji
+              My Ka<span className="red-n">n</span>ji
             </NavLink>
             <NavLink
               className="direct"
               activeClassName="active"
               to="/kanji_help"
             >
-              Ka<span>n</span>ji Help
+              Ka<span className="red-n">n</span>ji Help
             </NavLink>
             {button}
           </div>

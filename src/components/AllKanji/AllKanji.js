@@ -15,7 +15,8 @@ class AllKanji extends Component {
       allKanji: [],
       add: [],
       add2: [],
-      add3: []
+      add3: [],
+      loading: true
     };
   }
   componentDidMount() {
@@ -25,7 +26,8 @@ class AllKanji extends Component {
   readAllKanji() {
     Rapid.get("/kanji/all").then(response => {
       this.setState({
-        allKanji: response.data
+        allKanji: response.data,
+        loading: false
       });
     });
   }
@@ -106,11 +108,13 @@ class AllKanji extends Component {
 
                 <div className="kana2">
                   <h2 className="kunyomi ">
-                    KUN<span>-</span>YOMI: {k.kanji.kunyomi.hiragana}
+                    KUN<span className="dash-red">-</span>YOMI:{" "}
+                    {k.kanji.kunyomi.hiragana}
                   </h2>
 
                   <h2 className="onyomi ">
-                    ON<span>-</span>YOMI: {k.kanji.onyomi.katakana}
+                    ON<span className="dash-red">-</span>YOMI:{" "}
+                    {k.kanji.onyomi.katakana}
                   </h2>
                 </div>
               </div>
@@ -154,23 +158,37 @@ class AllKanji extends Component {
       });
     return (
       <div>
-        <ToastContainer />
-        <div className="search-input-container">
-          <button
-            className={this.props.user.user ? "alive" : "dead"}
-            onClick={e => this.done()}
-          >
-            Finished
-          </button>
-          <input
-            type="text"
-            className="search-input"
-            value={search}
-            onChange={e => this.setState({ search: e.target.value })}
-          />
-        </div>
+        {this.state.loading ? (
+          <div className="loading">
+            <div class="loading ui segment">
+              <div class="ui active dimmer">
+                <div class="mate ui massive text loader">ちょと待て下さい</div>
+              </div>
+              <p></p>
+              <p></p>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <ToastContainer />
+            <div className="search-input-container">
+              <button
+                className={this.props.user.user ? "alive" : "dead"}
+                onClick={e => this.done()}
+              >
+                Finished
+              </button>
+              <input
+                type="text"
+                className="search-input"
+                value={search}
+                onChange={e => this.setState({ search: e.target.value })}
+              />
+            </div>
 
-        {filteredKanji}
+            {filteredKanji}
+          </div>
+        )}
       </div>
     );
   }

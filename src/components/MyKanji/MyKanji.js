@@ -204,9 +204,15 @@ class MyKanji extends Component {
             <img className="spinner" src={spinner} alt="spin" />
           </div>
           <div className="heads">
-            <h1 className="container-heads">Kanji I Know</h1>
-            <h1>Kanji I'm Learning</h1>
-            <h1>Kanji I'll Learn</h1>
+            <h1 className="container-heads">
+              Ka<span className="n-red">n</span>ji I Know
+            </h1>
+            <h1>
+              Ka<span className="n-red">n</span>ji I'm Learning
+            </h1>
+            <h1>
+              Ka<span className="n-red">n</span>ji I'll Learn
+            </h1>
           </div>
           <div className="contained">
             <div className="containers studied1">

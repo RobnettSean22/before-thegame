@@ -1,23 +1,31 @@
 import React, { Component } from "react";
 import "./Home.css";
 import Logo from "./logo.png";
+import Rapid from "../Rapid";
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      search: "",
+      allKanji: []
+    };
   }
-
+  readAllKanji() {
+    Rapid.get("/kanji/all").then(response => {
+      this.setState({
+        allKanji: response.data
+      });
+    });
+  }
   render() {
     return (
       <div className="background">
         <div className="concealer">
           <h1 className="kanjinme">
-            KANJI <span>N</span> ME
+            KANJI <span className="heart">N</span> ME
           </h1>
-          <input className="search-kanji" />
-          <button className="search">Search</button>
         </div>
       </div>
     );

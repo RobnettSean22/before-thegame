@@ -1,87 +1,83 @@
-body{
-    width:100vw;
-    /* overflow:hidden; */
-  
+body {
+  width: 100vw;
+  /* overflow:hidden; */
 }
-.background{
-    width:100%;
-    height: 95vh;
-    background-size: cover;
-    background-image: url('Tilted.jpg');
-    margin-top:0%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.signup-container{
-    width: 38%;
-    height: 49%;
-    background:#030303;
-    flex-direction: column ;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    opacity: .87;
-    border: 2px solid #FF0B0B;
-    border-radius:33px;
-    margin-bottom: 4%;
+.background {
+  width: 100%;
+  height: 95vh;
+  background-size: cover;
+  background-image: url("Tilted.jpg");
+  margin-top: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.signup-label-container{
-    margin-left: 16%;
-    margin-bottom: 5%;
+.signup-container {
+  width: 38%;
+  height: 49%;
+  background: #030303;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  opacity: 0.87;
+  border: 2px solid #ff0b0b;
+  border-radius: 33px;
+  margin-bottom: 4%;
 }
 
-.top-label{
-    color: white;
-    font-size: 72px;
-    
-    
-
-}
-.username{
-    font-size:33px;
-    color: white;
+.signup-label-container {
+  margin-left: 16%;
+  margin-bottom: 5%;
 }
 
-.top-signup-input{
-    margin-top:1%; 
+.top-label {
+  color: white;
+  font-size: 72px;
+}
+.username {
+  font-size: 33px;
+  color: white;
+}
+
+.top-signup-input {
+  margin-top: 1%;
 }
 /*.top-login-input{
     margin-top:5%; 
 }*/
-.signup-input{
-    border-radius: 2px;
-    width: 58%;
-    height: 7%;
-    margin-bottom: 5%;
-    margin-left: 0%;
-   
-    background:#FFFFFF;
-    font-size: 25px;
+.signup-input {
+  border-radius: 2px;
+  width: 58%;
+  height: 7%;
+  margin-bottom: 5%;
+  margin-left: 0%;
+
+  background: #ffffff;
+  font-size: 25px;
 }
-.pw{
-    margin-left: 8.3% 
+.pw {
+  margin-left: 8.3%;
 }
 
-.pwi{
-    margin-left: .1% 
+.pwi {
+  margin-left: 0.1%;
 }
 
-.em{
-    margin-left: 16.6% 
+.em {
+  margin-left: 16.6%;
 }
-.emi{
-    margin-left:.1%; 
-}
-
-.acu{
-   margin-left: 7% 
+.emi {
+  margin-left: 0.1%;
 }
 
-.ui{
-    margin-left: .1% 
+.acu {
+  margin-left: 7%;
+}
+
+.ui {
+  margin-left: 0.1%;
 }
 /* .login-input{
     
@@ -94,39 +90,40 @@ body{
     font-size: 25px;
 } */
 
-
-input:focus, textarea:focus{
-    outline: none;
+input:focus,
+textarea:focus {
+  outline: none;
 }
 
-
-.signup-button{
-    width:30%;
-    height:44px;
-    font-size:27px;
-    border: 2px solid white;
-    color: white;
-    margin-left: 37%;
-    margin-bottom:3%;
-    margin-top: 2%;
-    background: black;
-    border-radius:2px;
-    
+.signup-button {
+  width: 30%;
+  height: 44px;
+  font-size: 27px;
+  border: 2px solid white;
+  color: white;
+  margin-left: 37%;
+  margin-bottom: 3%;
+  margin-top: 2%;
+  background: black;
+  border-radius: 2px;
 }
 
-.signup-button:hover{
-    color:#FF0B0B;
-    border: 2px solid #FF0B0B;
+.signup-button:hover {
+  color: #ff0b0b;
+  border: 2px solid #ff0b0b;
 }
 
-
-.route-link{
-    text-decoration: none;
-    color:black;
+.route-link {
+  text-decoration: none;
+  color: black;
 }
 
-button:focus, button:hover {
-    cursor: pointer;
-    outline:none;
-   
+button:focus,
+button:hover {
+  cursor: pointer;
+  outline: none;
+}
+
+.signup-n {
+  color: #ff0b0b;
 }

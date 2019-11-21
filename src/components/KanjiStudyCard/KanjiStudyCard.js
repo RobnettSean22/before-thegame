@@ -150,18 +150,19 @@ class KanjiStudyCard extends Component {
           <div className="testing">{whatToinput[wi]}</div>
         </div>
         <div className="user-answer">
-          <input
-            value={answer}
-            onChange={e => this.setState({ answer: e.target.value })}
-          />
-
-          <button
-            onClick={() => {
+          <form
+            className="form-answer"
+            onSubmit={() => {
               this.match(answer);
             }}
           >
-            try
-          </button>
+            <button className="fire">Fire Away</button>
+            <input
+              className="animalf"
+              value={answer}
+              onChange={e => this.setState({ answer: e.target.value })}
+            />
+          </form>
         </div>
       </div>
     );

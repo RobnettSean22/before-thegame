@@ -23,10 +23,36 @@ class KanjiStudyCard extends Component {
 
   componentDidMount() {
     //figure out conditions to render
-    if (this.props.cd1) {
+    if (this.props.here === "first add") {
       this.setState(() => {
         // set state is async logic starts here
         let card = this.props.cd1.map(ref => {
+          return this.props.all.filter(kcc => {
+            return ref.index_number === kcc.references.kodansha;
+          });
+        });
+        //   logic ends here
+        // object to merge into state
+        console.log(456, card);
+        return { card: card };
+      });
+    } else if (this.props.here === "second add") {
+      this.setState(() => {
+        // set state is async logic starts here
+        let card = this.props.cd2.map(ref => {
+          return this.props.all.filter(kcc => {
+            return ref.index_number === kcc.references.kodansha;
+          });
+        });
+        //   logic ends here
+        // object to merge into state
+        console.log(456, card);
+        return { card: card };
+      });
+    } else {
+      this.setState(() => {
+        // set state is async logic starts here
+        let card = this.props.cd3.map(ref => {
           return this.props.all.filter(kcc => {
             return ref.index_number === kcc.references.kodansha;
           });

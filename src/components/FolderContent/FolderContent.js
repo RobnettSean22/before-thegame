@@ -125,7 +125,10 @@ class FolderContent extends Component {
           <button className="study">
             <Link
               className="quiz"
-              to={`/study/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`}
+              to={{
+                pathname: `/study/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`,
+                state: this.props.location.state
+              }}
             >
               Study
             </Link>

@@ -21,10 +21,16 @@ class Study extends Component {
     this.readAllKanji();
     this.readKanji(
       this.props.user.user.user_id,
-      this.props.match.params.folder_id
+      +this.props.match.params.folder_id
     );
-    this.readKanji2(this.props.user.user.user_id, this.props.folder_id);
-    this.readKanji3(this.props.user.user.user_id, this.props.folder_id);
+    this.readKanji2(
+      this.props.user.user.user_id,
+      +this.props.match.params.folder_id
+    );
+    this.readKanji3(
+      this.props.user.user.user_id,
+      +this.props.match.params.folder_id
+    );
   }
 
   readAllKanji() {
@@ -72,9 +78,10 @@ class Study extends Component {
   }
 
   render() {
+    console.log(this.props.location.state);
     const { allKanji, kCode1, kCode2, kCode3 } = this.state;
     console.log(allKanji);
-    console.log(kCode1);
+    console.log(kCode2);
     // const {kCode1} = this.state
     // console.log(kCode1)
 
@@ -87,6 +94,7 @@ class Study extends Component {
             cd2={kCode2}
             cd3={kCode3}
             shuf={this.shuffle}
+            here={this.props.location.state}
           />
         )}
       </div>

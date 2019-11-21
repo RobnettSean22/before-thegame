@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
 import { setUser } from "../reducer/userReducer";
 
@@ -12,7 +13,7 @@ class KanjiStudyCard extends Component {
       code1: [],
       code2: [],
       code3: [],
-      meaningVary: [],
+      correct: ["NICE!", "GREAT!", "WITH EASE!", "CLEAN!", "BOSS!"],
       whatToinput: ["English", "kun-yomi", "on-yomi"],
       wi: 0,
       answer: "",
@@ -63,9 +64,6 @@ class KanjiStudyCard extends Component {
         return { card: card };
       });
     }
-    // this.setState({
-    //     card:this.props.all
-    //     })
   }
 
   match(answer) {
@@ -87,7 +85,12 @@ class KanjiStudyCard extends Component {
       this.setState({
         i: this.state.i + 1
       });
+    } else if (this.state.card.length === undefined) {
+      this.setState({
+        i: 0
+      });
     }
+    this.notify();
     this.rand();
   }
 
@@ -128,23 +131,21 @@ class KanjiStudyCard extends Component {
     }
   }
 
+  notify = () => toast("spot on");
+
   render() {
     const { card, i, answer, whatToinput, wi } = this.state;
 
-    // console.log(this.state.card);
-
-    // const keys = meaningVary[Math.floor(Math.random() * meaningVary.legnth)];
-    // console.log(keys);
-
-    //this.rand ask about*****************************
     return (
       <div>
+        <ToastContainer />
         {card.length > 0 && card[i][0].kanji.character}
         <div>{whatToinput[wi]}</div>
         <input
           value={answer}
           onChange={e => this.setState({ answer: e.target.value })}
         />
+
         <button
           onClick={() => {
             this.match(answer);

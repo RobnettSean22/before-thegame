@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Rapid from "../Rapid";
 import "./AllKanji.css";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setUser } from "../../reducer/kanjiReducer";
@@ -37,7 +38,9 @@ class AllKanji extends Component {
           add: response.data
         });
       });
+    this.notify();
   }
+
   addKanji2(user_id, folder_id, index_number) {
     axios
       .post(`/api/add2_kanji/${user_id}/${folder_id}`, { index_number })
@@ -46,6 +49,7 @@ class AllKanji extends Component {
           add2: response.data
         });
       });
+    this.notify();
   }
 
   addKanji3(user_id, folder_id, index_number) {
@@ -56,6 +60,16 @@ class AllKanji extends Component {
           add3: response.data
         });
       });
+    this.notify();
+  }
+
+  notify = () => toast("It shall be so");
+
+  done() {
+    this.props.history.push(
+      `/folder_content/${this.props.user.user.user_id}/${+this.props.match
+        .params.folder_id}`
+    );
   }
 
   render() {
@@ -140,7 +154,9 @@ class AllKanji extends Component {
       });
     return (
       <div>
+        <ToastContainer />
         <div className="search-input-container">
+          <button onClick={e => this.done()}>Finished</button>
           <input
             className="search-input"
             value={search}

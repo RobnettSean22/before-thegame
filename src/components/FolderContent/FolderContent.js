@@ -19,9 +19,7 @@ class FolderContent extends Component {
     };
   }
   componentDidMount() {
-    if (!this.props.user.user) {
-      this.props.history.push("/login/");
-    } else {
+    if (this.props.user.user) {
       this.readAllKanji();
 
       this.readKanji(
@@ -36,6 +34,8 @@ class FolderContent extends Component {
         this.props.user.user.user_id,
         +this.props.match.params.folder_id
       );
+    } else {
+      this.props.history.push("/login/");
     }
   }
 

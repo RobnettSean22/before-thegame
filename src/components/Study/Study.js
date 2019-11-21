@@ -18,19 +18,23 @@ class Study extends Component {
   }
 
   componentDidMount() {
-    this.readAllKanji();
-    this.readKanji(
-      this.props.user.user.user_id,
-      +this.props.match.params.folder_id
-    );
-    this.readKanji2(
-      this.props.user.user.user_id,
-      +this.props.match.params.folder_id
-    );
-    this.readKanji3(
-      this.props.user.user.user_id,
-      +this.props.match.params.folder_id
-    );
+    if (this.props.user.user) {
+      this.readAllKanji();
+      this.readKanji(
+        this.props.user.user.user_id,
+        +this.props.match.params.folder_id
+      );
+      this.readKanji2(
+        this.props.user.user.user_id,
+        +this.props.match.params.folder_id
+      );
+      this.readKanji3(
+        this.props.user.user.user_id,
+        +this.props.match.params.folder_id
+      );
+    } else {
+      this.props.history.push("/login/");
+    }
   }
 
   readAllKanji() {
@@ -76,6 +80,12 @@ class Study extends Component {
       });
     });
   }
+  finished() {
+    this.props.history.push(
+      `/folder_content/${this.props.user.user.user_id}/${+this.props.match
+        .params.folder_id}`
+    );
+  }
 
   render() {
     console.log(this.props.location.state);
@@ -95,8 +105,12 @@ class Study extends Component {
             cd3={kCode3}
             shuf={this.shuffle}
             here={this.props.location.state}
+            userid={this.props.user.user.user_id}
+            folderid={+this.props.match.params.folder_id}
           />
         )}
+
+        <button onClick={e => this.finished()}>Finished</button>
       </div>
     );
   }

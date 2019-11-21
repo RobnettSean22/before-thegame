@@ -15,7 +15,8 @@ class FolderContent extends Component {
       allKanji: [],
       kanjiCode: [],
       kanjiCode2: [],
-      kanjiCode3: []
+      kanjiCode3: [],
+      loading: true
     };
   }
   componentDidMount() {
@@ -42,7 +43,8 @@ class FolderContent extends Component {
   readAllKanji() {
     Rapid.get("/kanji/all").then(response => {
       this.setState({
-        allKanji: response.data
+        allKanji: response.data,
+        loading: false
       });
     });
   }

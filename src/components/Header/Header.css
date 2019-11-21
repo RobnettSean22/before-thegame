@@ -25,7 +25,8 @@
 }
 
 .direct:hover {
-  color: blue;
+  color: #ff0b0b;
+  text-decoration: none;
 }
 .logo {
   width: 49%;

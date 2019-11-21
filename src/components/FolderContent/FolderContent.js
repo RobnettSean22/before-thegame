@@ -5,6 +5,7 @@ import { setUser } from "../../reducer/userReducer";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./FolderContent.css";
+import { FaGhost } from "react-icons/fa";
 
 class FolderContent extends Component {
   constructor(props) {
@@ -67,6 +68,34 @@ class FolderContent extends Component {
         kanjiCode3: response.data
       });
     });
+  }
+
+  deleteKanji(user_id, folder_id, kanji_id) {
+    axios
+      .delete(`/api/delete_kanji/${user_id}/${folder_id}/${kanji_id}`)
+      .then(response => {
+        this.setState({
+          kanjiCode: response.data
+        });
+      });
+  }
+  deleteKanji2(user_id, folder_id, kanji_id) {
+    axios
+      .delete(`/api/delete_kanji/${user_id}/${folder_id}/${kanji_id}`)
+      .then(response => {
+        this.setState({
+          kanjiCode2: response.data
+        });
+      });
+  }
+  deleteKanji3(user_id, folder_id, kanji_id) {
+    axios
+      .delete(`/api/delete_kanji/${user_id}/${folder_id}/${kanji_id}`)
+      .then(response => {
+        this.setState({
+          kanjiCode3: response.data
+        });
+      });
   }
 
   render() {
@@ -140,6 +169,16 @@ class FolderContent extends Component {
                       <h2 className="english">
                         English: {fu.kanji.meaning.english}
                       </h2>
+                      <FaGhost
+                        className="delete-kanji"
+                        onClick={e =>
+                          this.deleteKanji(
+                            this.props.user.user.user_id,
+                            +this.props.match.params.folder_id,
+                            kc.kanji_id
+                          )
+                        }
+                      />
                     </div>
                   </div>
                 </div>
@@ -185,6 +224,16 @@ class FolderContent extends Component {
                       <h2 className="english">
                         English: {fu.kanji.meaning.english}
                       </h2>
+                      <FaGhost
+                        className="delete-kanji"
+                        onClick={e =>
+                          this.deleteKanji2(
+                            this.props.user.user.user_id,
+                            +this.props.match.params.folder_id,
+                            kc.kanji_id
+                          )
+                        }
+                      />
                     </div>
                   </div>
                 </div>
@@ -230,6 +279,16 @@ class FolderContent extends Component {
                       <h2 className="english">
                         English: {fu.kanji.meaning.english}
                       </h2>
+                      <FaGhost
+                        className="delete-kanji"
+                        onClick={e =>
+                          this.deleteKanji3(
+                            this.props.user.user.user_id,
+                            +this.props.match.params.folder_id,
+                            kc.kanji_id
+                          )
+                        }
+                      />
                     </div>
                   </div>
                 </div>

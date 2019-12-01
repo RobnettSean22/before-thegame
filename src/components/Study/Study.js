@@ -108,8 +108,6 @@ class Study extends Component {
             folderid={+this.props.match.params.folder_id}
           />
         )}
-
-        <button onClick={e => this.finished()}>Finished</button>
       </div>
     );
   }

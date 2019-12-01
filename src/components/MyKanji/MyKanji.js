@@ -3,7 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { setUser } from "../../reducer/userReducer";
 import { Link } from "react-router-dom";
-import { FaGhost } from "react-icons/fa";
+import { FaGhost, FaSync } from "react-icons/fa";
 import spinner from "./spinner.png";
 import "./MyKanji.css";
 
@@ -138,25 +138,31 @@ class MyKanji extends Component {
     const mapStudy = study.map(folder3 => {
       return (
         <div className="folders" key={folder3.folder_id}>
-          <Link
-            className="link"
-            to={{
-              pathname: `/folder_content/${this.props.user.user.user_id}/${folder3.folder_id}`,
-              state: "third add"
-            }}
-          >
-            {folder3.folder_name}
-          </Link>
-
-          <FaGhost
-            className="delete-icon"
-            onClick={e =>
-              this.deleteFolderStudying3(
-                this.props.user.user.user_id,
-                folder3.folder_id
-              )
-            }
-          />
+          <div className="update-button">
+            <FaSync />
+          </div>
+          <div className="name-of-folder">
+            <Link
+              className="link"
+              to={{
+                pathname: `/folder_content/${this.props.user.user.user_id}/${folder3.folder_id}`,
+                state: "third add"
+              }}
+            >
+              {folder3.folder_name}
+            </Link>
+          </div>
+          <div className="delete-icon-container">
+            <FaGhost
+              className="delete-icon"
+              onClick={e =>
+                this.deleteFolderStudying3(
+                  this.props.user.user.user_id,
+                  folder3.folder_id
+                )
+              }
+            />
+          </div>
         </div>
       );
     });
@@ -164,71 +170,62 @@ class MyKanji extends Component {
     const mapStudying = studying.map(folder2 => {
       return (
         <div className="folders" key={folder2.folder_id}>
-          <Link
-            className="link"
-            to={{
-              pathname: `/folder_content/${this.props.user.user.user_id}/${folder2.folder_id}/`,
-              state: "second add"
-            }}
-          >
-            {folder2.folder_name}
-          </Link>
-
-          <FaGhost
-            className="delete-icon"
-            onClick={e =>
-              this.deleteFolderStudying(
-                this.props.user.user.user_id,
-                folder2.folder_id
-              )
-            }
-          />
+          <div className="update-button">
+            <FaSync />
+          </div>
+          <div className="name-of-folder">
+            <Link
+              className="link"
+              to={{
+                pathname: `/folder_content/${this.props.user.user.user_id}/${folder2.folder_id}/`,
+                state: "second add"
+              }}
+            >
+              {folder2.folder_name}
+            </Link>
+          </div>
+          <div className="delete-icon-container">
+            <FaGhost
+              className="delete-icon"
+              onClick={e =>
+                this.deleteFolderStudying(
+                  this.props.user.user.user_id,
+                  folder2.folder_id
+                )
+              }
+            />
+          </div>
         </div>
       );
     });
     const mapFolderName = folders.map(folder => {
       return (
         <div className="folders" key={folder.folder_id}>
-          <Popup
-            className="update"
-            trigger={<button></button>}
-            position="left top"
-          >
-            <div>
-              <input
-                value={folderName2}
-                onChange={e => this.setState({ folderName2: e.target.value })}
-              />
-              <button
-                onClick={e =>
-                  this.updateFolderStudied(
-                    this.props.user.user.user_id,
-                    folder.folder_id,
-                    folder.folder_name
-                  )
-                }
-              ></button>
-            </div>
-          </Popup>
-          <Link
-            className="link"
-            to={{
-              pathname: `/folder_content/${this.props.user.user.user_id}/${folder.folder_id}`,
-              state: "first add"
-            }}
-          >
-            {folder.folder_name}
-          </Link>
-
-          <FaGhost
-            className="delete-icon"
-            onClick={e =>
-              this.deleteFolderStudied(
-                this.props.user.user.user_id,
-                folder.folder_id
-              )
-            }
-          />
+          <div className="update-button">
+            <FaSync />
+          </div>
+          <div className="name-of-folder">
+            <Link
+              className="link"
+              to={{
+                pathname: `/folder_content/${this.props.user.user.user_id}/${folder.folder_id}`,
+                state: "first add"
+              }}
+            >
+              {folder.folder_name}
+            </Link>
+          </div>
+          <div className="delete-icon-container">
+            <FaGhost
+              className="delete-icon"
+              onClick={e =>
+                this.deleteFolderStudied(
+                  this.props.user.user.user_id,
+                  folder.folder_id
+                )
+              }
+            />
+          </div>
         </div>
       );
     });

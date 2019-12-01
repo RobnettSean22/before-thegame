@@ -123,7 +123,7 @@ class FolderContent extends Component {
           </button>
         </div>
         <div className="folder-label-container">
-          <h1 className="folder_label">Folder Name</h1>
+          <h1 className="folder_label"></h1>
           <button className="study">
             <Link
               className="quiz"

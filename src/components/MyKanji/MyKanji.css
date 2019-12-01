@@ -85,7 +85,7 @@ div .folders {
   height: 16%;
   background-color: rgb(249, 249, 249);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1.25px solid black;
   border-left: 1.25px solid black;
@@ -93,7 +93,7 @@ div .folders {
   border-top: 1.2px solid black;
   border-radius: 5px;
   position: relative;
-  font-size: 26px;
+  font-size: 25px;
 
   border-radius: 5px;
 }
@@ -121,6 +121,28 @@ div .folders:hover a {
   height: 64%;
   color: #fa7e7e;
   margin-left: 10%;
+}
+.update-button {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.starting {
+  width: 70%;
+  height: 30%;
+}
+.name-of-folder {
+  width: 73%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete-icon-container {
+  width: 10%;
+  height: 100%;
 }
 .delete-icon {
   width: 8%;
@@ -173,14 +195,15 @@ div .folders:hover a {
   right: 0;
 }
 .create:focus {
-  outline-color: #ff0b0b;
+  outline-color: none;
   outline-style: groove;
   outline-width: 3px;
 }
 .link {
-  padding: 0.2em 7.5em;
+  /* padding: 0.2em 7.5em; */
   text-decoration: none;
   color: black;
+  font-weight: bold;
 }
 
 .n-red {
@@ -197,4 +220,9 @@ div .folders:hover a {
 .k {
   font-weight: bold;
   font-size: 45px;
+}
+.update-folder {
+  width: 15%;
+  height: 20%;
+  font-size: 10px;
 }

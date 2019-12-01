@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { setUser } from "../../reducer/userReducer";
 import { Link } from "react-router-dom";
 import { FaGhost, FaSync } from "react-icons/fa";
+import Modal1 from "../Modal/Modal1";
 import spinner from "./spinner.png";
 import "./MyKanji.css";
 

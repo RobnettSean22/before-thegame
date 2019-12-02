@@ -4,11 +4,9 @@ import { connect } from "react-redux";
 import { setUser } from "../../reducer/userReducer";
 import { Link } from "react-router-dom";
 import { FaGhost, FaSync } from "react-icons/fa";
-import Modal1 from "../Modal/Modal1";
+
 import spinner from "./spinner.png";
 import "./MyKanji.css";
-
-import Popup from "reactjs-popup";
 
 class MyKanji extends Component {
   constructor(props) {
@@ -131,7 +129,7 @@ class MyKanji extends Component {
   }
 
   render() {
-    const { folderName, folderName2 } = this.state;
+    const { folderName } = this.state;
     const { folders } = this.state;
     const { studying, studyingName } = this.state;
     const { study, studyName } = this.state;
@@ -251,63 +249,210 @@ class MyKanji extends Component {
           <div className="contained">
             <div className="containers studied1">
               {mapFolderName}
-
               <button
-                className="create"
-                onClick={e =>
-                  this.createFolderStudied(
-                    this.props.user.user.user_id,
-                    folderName
-                  )
-                }
+                type="button"
+                className="btn btn-primary create"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+                data-whatever="know"
               >
-                <span>New Folder</span>
+                New Folder
               </button>
-              <input
-                value={folderName}
-                onChange={e => this.setState({ folderName: e.target.value })}
-              />
+              <div
+                class="modal fade"
+                id="exampleModalCenter"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">
+                        Create New Folder
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <input
+                        value={folderName}
+                        onChange={e =>
+                          this.setState({ folderName: e.target.value })
+                        }
+                      />
+                    </div>
+
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        className="create"
+                        onClick={e =>
+                          this.createFolderStudied(
+                            this.props.user.user.user_id,
+                            folderName
+                          )
+                        }
+                        type="button"
+                        class="btn btn-primary"
+                      >
+                        Create
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="containers studying2">
               {mapStudying}
-
               <button
-                className="create"
-                onClick={e =>
-                  this.createFolderStudying(
-                    this.props.user.user.user_id,
-                    studyingName
-                  )
-                }
+                type="button"
+                className="btn btn-primary create"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
               >
-                <span>New Folder</span>
+                New Folder
               </button>
+              <div
+                class="modal fade"
+                id="exampleModalCenter"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">
+                        Create New Folder
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <input
+                        value={studyingName}
+                        onChange={e =>
+                          this.setState({ studyingName: e.target.value })
+                        }
+                      />
+                    </div>
 
-              <input
-                value={studyingName}
-                onChange={e => this.setState({ studyingName: e.target.value })}
-              />
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        className="create"
+                        onClick={e =>
+                          this.createFolderStudying(
+                            this.props.user.user.user_id,
+                            studyingName
+                          )
+                        }
+                        type="button"
+                        class="btn btn-primary"
+                      >
+                        Create
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="containers study3">
               {mapStudy}
-
               <button
-                className="create"
-                onClick={e =>
-                  this.createFolderStudying3(
-                    this.props.user.user.user_id,
-                    studyName
-                  )
-                }
+                type="button"
+                class="btn btn-primary create"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
               >
-                <span>New Folder</span>
+                New Folder
               </button>
-              <input
-                value={studyName}
-                onChange={e => this.setState({ studyName: e.target.value })}
-              />
+              <div
+                class="modal fade"
+                id="exampleModalCenter"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">
+                        Create New Folder
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <input
+                        value={studyName}
+                        onChange={e =>
+                          this.setState({ studyName: e.target.value })
+                        }
+                      />
+                    </div>
+
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        className="create"
+                        onClick={e =>
+                          this.createFolderStudying3(
+                            this.props.user.user.user_id,
+                            studyName
+                          )
+                        }
+                        type="button"
+                        class="btn btn-primary"
+                      >
+                        Create
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

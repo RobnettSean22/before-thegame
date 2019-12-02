@@ -73,27 +73,29 @@ class KanjiStudyCard extends Component {
     const kunyomi = this.state.card[this.state.i][0].kanji.kunyomi.romaji;
 
     const onyomi = this.state.card[this.state.i][0].kanji.onyomi.romaji;
-
-    if (english === this.state.answer) {
-      this.setState({
-        i: this.state.i + 1
-      });
-    } else if (kunyomi === this.state.answer) {
-      this.setState({
-        i: this.state.i + 1
-      });
-    } else if (onyomi === this.state.answer) {
-      this.setState({
-        i: this.state.i + 1
-      });
-    } else if (this.state.card[this.state.card.length - 1]) {
-      // this.setState({
-      //   i: 0
-      // });
-      console.log(5611615);
+    if (!this.state.i > this.state.card.length - 1) {
+      if (english === this.state.answer) {
+        this.setState({
+          i: this.state.i + 1
+        });
+        this.rand();
+      } else if (kunyomi === this.state.answer) {
+        this.setState({
+          i: this.state.i + 1
+        });
+        this.rand();
+      } else if (onyomi === this.state.answer) {
+        this.setState({
+          i: this.state.i + 1
+        });
+        this.rand();
+      } else {
+        this.notify();
+        console.log(5611615);
+      }
+    } else {
+      this.props.history.push("/login/");
     }
-    this.notify();
-    this.rand();
   }
 
   rand() {
@@ -133,7 +135,7 @@ class KanjiStudyCard extends Component {
     }
   }
 
-  notify = () => toast("spot on");
+  notify = () => toast("Try again");
 
   render() {
     const { card, i, answer, whatToinput, wi } = this.state;

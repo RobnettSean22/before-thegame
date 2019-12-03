@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { setUser } from "../../reducer/userReducer";
 import "./KanjiStudyCard.css";
+import { thisTypeAnnotation } from "@babel/types";
 
 class KanjiStudyCard extends Component {
   constructor(props) {
@@ -73,7 +75,9 @@ class KanjiStudyCard extends Component {
     const kunyomi = this.state.card[this.state.i][0].kanji.kunyomi.romaji;
 
     const onyomi = this.state.card[this.state.i][0].kanji.onyomi.romaji;
-    if (!this.state.i > this.state.card.length - 1) {
+    if (this.state.i >= this.state.card.length - 1) {
+      this.props.history.push("/");
+    } else {
       if (english === this.state.answer) {
         this.setState({
           i: this.state.i + 1
@@ -93,8 +97,6 @@ class KanjiStudyCard extends Component {
         this.notify();
         console.log(5611615);
       }
-    } else {
-      this.props.history.push("/login/");
     }
   }
 
@@ -139,13 +141,18 @@ class KanjiStudyCard extends Component {
 
   render() {
     const { card, i, answer, whatToinput, wi } = this.state;
-
+    console.log("card ========> ", this.props);
+    console.log("with index added", card[0]);
     return (
       <div className="backside">
         <ToastContainer />
         <div className="study-this">
           <div className="study-this-kanji">
-            {card.length > 0 && card[i][0].kanji.character}
+            {card.length > 0 &&
+              card[i] &&
+              card[i][0] &&
+              card[i][0].kanji &&
+              card[i][0].kanji.character}
           </div>
         </div>
         <div className="test">
@@ -179,4 +186,6 @@ const mapDispatchToProps = {
   setUser
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(KanjiStudyCard);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(KanjiStudyCard)
+);

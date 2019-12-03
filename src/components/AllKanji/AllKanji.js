@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { connect } from "react-redux";
-import { setUser } from "../../reducer/kanjiReducer";
+import { setUser } from "../../reducer/userReducer";
 class AllKanji extends Component {
   constructor(props) {
     super(props);

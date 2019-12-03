@@ -52,6 +52,29 @@ class MyKanji extends Component {
       });
   }
 
+  updateFolderStudying(user_id, folder_id, folder_name) {
+    axios
+      .put(`/api/studied_folder_update/${user_id}/${folder_id}/`, {
+        folder_name
+      })
+      .then(response => {
+        this.setState({
+          folders: response.data
+        });
+      });
+  }
+  updateFolderStudying3(user_id, folder_id, folder_name) {
+    axios
+      .put(`/api/studied_folder_update/${user_id}/${folder_id}/`, {
+        folder_name
+      })
+      .then(response => {
+        this.setState({
+          folders: response.data
+        });
+      });
+  }
+
   createFolderStudied(user_id, folderName) {
     axios
       .post(`/api/studied_folder/${user_id}`, { folderName })
@@ -129,7 +152,7 @@ class MyKanji extends Component {
   }
 
   render() {
-    const { folderName } = this.state;
+    const { folderName, folderName2 } = this.state;
     const { folders } = this.state;
     const { studying, studyingName } = this.state;
     const { study, studyName } = this.state;
@@ -201,7 +224,71 @@ class MyKanji extends Component {
       return (
         <div className="folders" key={folder.folder_id}>
           <div className="update-button">
-            <FaSync />
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              chane name
+            </button>
+
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Modal title
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input
+                      value={folderName2}
+                      onChange={e =>
+                        this.setState({ folderName2: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      onClick={e =>
+                        this.updateFolderStudied(
+                          this.props.user.user.user_id,
+                          folder.folder_id,
+                          folderName2
+                        )
+                      }
+                      type="button"
+                      class="btn btn-primary"
+                    >
+                      Save changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="name-of-folder">
             <Link
@@ -253,14 +340,13 @@ class MyKanji extends Component {
                 type="button"
                 className="btn btn-primary create"
                 data-toggle="modal"
-                data-target="#exampleModalCenter"
-                data-whatever="know"
+                data-target="#know"
               >
                 New Folder
               </button>
               <div
                 class="modal fade"
-                id="exampleModalCenter"
+                id="know"
                 tabindex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalCenterTitle"
@@ -323,13 +409,13 @@ class MyKanji extends Component {
                 type="button"
                 className="btn btn-primary create"
                 data-toggle="modal"
-                data-target="#exampleModalCenter"
+                data-target="#learn"
               >
                 New Folder
               </button>
               <div
                 class="modal fade"
-                id="exampleModalCenter"
+                id="learn"
                 tabindex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalCenterTitle"
@@ -392,13 +478,13 @@ class MyKanji extends Component {
                 type="button"
                 class="btn btn-primary create"
                 data-toggle="modal"
-                data-target="#exampleModalCenter"
+                data-target="#willlearn"
               >
                 New Folder
               </button>
               <div
                 class="modal fade"
-                id="exampleModalCenter"
+                id="willlearn"
                 tabindex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalCenterTitle"

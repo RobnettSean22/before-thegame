@@ -14,7 +14,7 @@ module.exports = {
     const db = req.app.get("db");
     const { user_id, folder_id } = req.params;
     const { folder_name } = req.body;
-    db.update_to_studied([user_id, folder_id, folder_name])
+    db.update_to_study([user_id, folder_id, folder_name])
       .then(study => res.status(200).send(study))
       .catch(err => {
         res.status(400).send({ errorMessage: "did not update" });

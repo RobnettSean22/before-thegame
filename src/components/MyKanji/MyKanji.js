@@ -54,23 +54,25 @@ class MyKanji extends Component {
 
   updateFolderStudying(user_id, folder_id, folder_name) {
     axios
-      .put(`/api/studied_folder_update/${user_id}/${folder_id}/`, {
+      .put(`/api/studying_folder_update/${user_id}/${folder_id}/`, {
         folder_name
       })
       .then(response => {
         this.setState({
-          folders: response.data
+          studying: response.data,
+          studyingName: ""
         });
       });
   }
   updateFolderStudying3(user_id, folder_id, folder_name) {
     axios
-      .put(`/api/studied_folder_update/${user_id}/${folder_id}/`, {
+      .put(`/api/study_folder_update/${user_id}/${folder_id}/`, {
         folder_name
       })
       .then(response => {
         this.setState({
-          folders: response.data
+          study: response.data,
+          studyName: ""
         });
       });
   }
@@ -161,7 +163,71 @@ class MyKanji extends Component {
       return (
         <div className="folders" key={folder3.folder_id}>
           <div className="update-button">
-            <FaSync />
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#study-update"
+            >
+              chane name
+            </button>
+
+            <div
+              class="modal fade"
+              id="study-update"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Modal title
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input
+                      value={studyName}
+                      onChange={e =>
+                        this.setState({ studyName: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      onClick={e =>
+                        this.updateFolderStudying3(
+                          this.props.user.user.user_id,
+                          folder3.folder_id,
+                          studyName
+                        )
+                      }
+                      type="button"
+                      class="btn btn-primary"
+                    >
+                      Save changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="name-of-folder">
             <Link
@@ -193,7 +259,71 @@ class MyKanji extends Component {
       return (
         <div className="folders" key={folder2.folder_id}>
           <div className="update-button">
-            <FaSync />
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#studying-update"
+            >
+              chane name
+            </button>
+
+            <div
+              class="modal fade"
+              id="studying-update"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Modal title
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input
+                      value={studyingName}
+                      onChange={e =>
+                        this.setState({ studyingName: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      onClick={e =>
+                        this.updateFolderStudying(
+                          this.props.user.user.user_id,
+                          folder2.folder_id,
+                          studyingName
+                        )
+                      }
+                      type="button"
+                      class="btn btn-primary"
+                    >
+                      Save changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="name-of-folder">
             <Link
@@ -228,14 +358,14 @@ class MyKanji extends Component {
               type="button"
               class="btn btn-primary"
               data-toggle="modal"
-              data-target="#exampleModal"
+              data-target="#studied-update"
             >
               chane name
             </button>
 
             <div
               class="modal fade"
-              id="exampleModal"
+              id="studied-update"
               tabindex="-1"
               role="dialog"
               aria-labelledby="exampleModalLabel"

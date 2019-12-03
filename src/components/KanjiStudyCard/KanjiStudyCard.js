@@ -75,22 +75,25 @@ class KanjiStudyCard extends Component {
     const kunyomi = this.state.card[this.state.i][0].kanji.kunyomi.romaji;
 
     const onyomi = this.state.card[this.state.i][0].kanji.onyomi.romaji;
-    if (this.state.i >= this.state.card.length - 1) {
+    if (this.state.card[this.state.i]) {
       this.props.history.push("/");
     } else {
       if (english === this.state.answer) {
         this.setState({
-          i: this.state.i + 1
+          i: this.state.i + 1,
+          answer: ""
         });
         this.rand();
       } else if (kunyomi === this.state.answer) {
         this.setState({
-          i: this.state.i + 1
+          i: this.state.i + 1,
+          answr: ""
         });
         this.rand();
       } else if (onyomi === this.state.answer) {
         this.setState({
-          i: this.state.i + 1
+          i: this.state.i + 1,
+          answer: ""
         });
         this.rand();
       } else {

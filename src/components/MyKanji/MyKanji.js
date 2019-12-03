@@ -163,14 +163,11 @@ class MyKanji extends Component {
       return (
         <div className="folders" key={folder3.folder_id}>
           <div className="update-button">
-            <button
-              type="button"
-              class="btn btn-primary"
+            <FaSync
+              className="sync"
               data-toggle="modal"
               data-target="#study-update"
-            >
-              chane name
-            </button>
+            />
 
             <div
               class="modal fade"
@@ -259,14 +256,11 @@ class MyKanji extends Component {
       return (
         <div className="folders" key={folder2.folder_id}>
           <div className="update-button">
-            <button
-              type="button"
-              class="btn btn-primary"
+            <FaSync
+              className="sync"
               data-toggle="modal"
               data-target="#studying-update"
-            >
-              chane name
-            </button>
+            />
 
             <div
               class="modal fade"
@@ -354,14 +348,11 @@ class MyKanji extends Component {
       return (
         <div className="folders" key={folder.folder_id}>
           <div className="update-button">
-            <button
-              type="button"
-              class="btn btn-primary"
+            <FaSync
+              className="sync"
               data-toggle="modal"
               data-target="#studied-update"
-            >
-              chane name
-            </button>
+            />
 
             <div
               class="modal fade"

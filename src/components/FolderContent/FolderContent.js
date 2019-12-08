@@ -20,7 +20,7 @@ class FolderContent extends Component {
     };
   }
   componentDidMount() {
-    if ((this.props.user.user = null)) {
+    if (this.props.user.user) {
       this.readAllKanji();
 
       this.readKanji(

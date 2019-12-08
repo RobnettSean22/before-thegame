@@ -41,12 +41,12 @@ class Header extends Component {
             to="/"
             onClick={e => this.logout()}
           >
-            Logout
+            <li>Logout</li>
           </NavLink>
         ))
       : (button = (
           <NavLink className="direct" activeClassName="active" to="/login">
-            Login
+            <li>Login</li>
           </NavLink>
         ));
     return (
@@ -55,6 +55,43 @@ class Header extends Component {
           <div className="logo">
             <img className="lego" src={Logo} alt="Logo" />
           </div>
+          <nav role="navigation">
+            <div id="menuToggle">
+              <input type="checkbox" />
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+              <ul id="menu">
+                <NavLink
+                  className="direct"
+                  activeClassName="active"
+                  exact
+                  to="/"
+                >
+                  <li>Home</li>
+                </NavLink>
+                <NavLink
+                  className="direct"
+                  activeClassName="active"
+                  to="/all_kanji"
+                >
+                  <li>All Kanji</li>
+                </NavLink>
+                <NavLink
+                  className="direct"
+                  activeClassName="active"
+                  to="/my_kanji"
+                >
+                  {" "}
+                  <li>My Kanji</li>
+                </NavLink>
+
+                {button}
+              </ul>
+            </div>
+          </nav>
           <div className="navlinks">
             <NavLink className="direct" activeClassName="active" exact to="/">
               Home
@@ -70,13 +107,7 @@ class Header extends Component {
               {" "}
               My Ka<span className="red-n">n</span>ji
             </NavLink>
-            <NavLink
-              className="direct"
-              activeClassName="active"
-              to="/kanji_help"
-            >
-              Ka<span className="red-n">n</span>ji Help
-            </NavLink>
+
             {button}
           </div>
         </header>

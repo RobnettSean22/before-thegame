@@ -231,9 +231,11 @@ div .folder-label-container {
 
   .add-kanji-to-folder {
     width: 21%;
-    height: 19px;
+    height: 25px;
     border-radius: 5px;
     margin-right: 3%;
+    background: none;
+    margin-top: 4%;
   }
   .add-kanji-to-folder:hover {
     border: 3px solid #ff2525;
@@ -264,6 +266,7 @@ div .folder-label-container {
     text-align: center;
     border-radius: 5px;
     margin-bottom: 1%;
+    background: white;
   }
   .quiz:hover {
     text-decoration: none;

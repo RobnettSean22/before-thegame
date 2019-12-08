@@ -38,3 +38,46 @@
   margin-left: 7.5%;
   margin-top: 0.5%;
 }
+@media screen and (max-width: 320px) {
+  .nav {
+    display: none;
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid black;
+    background-color: white;
+  }
+  .navlinks {
+    width: 36%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .red-n {
+    color: #ff0000;
+  }
+  .direct {
+    font-size: 21px;
+    margin: 0%;
+    text-decoration: none;
+    color: #4b4b4b;
+  }
+
+  .direct:hover {
+    color: #ff0b0b;
+    text-decoration: none;
+  }
+  .logo {
+    width: 49%;
+    height: 100%;
+  }
+  .lego {
+    width: 32%;
+    height: 97%;
+    margin-left: 7.5%;
+    margin-top: 0.5%;
+  }
+}

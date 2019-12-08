@@ -170,7 +170,7 @@ class FolderContent extends Component {
                       />
                     </div>
 
-                    <div className="english-container">
+                    <div className="english-container2">
                       <h2 className="english">
                         English: {fu.kanji.meaning.english}
                       </h2>

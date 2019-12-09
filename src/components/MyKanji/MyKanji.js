@@ -288,6 +288,7 @@ class MyKanji extends Component {
                   </div>
                   <div class="modal-body">
                     <input
+                      placeholder="Folder Name"
                       className="create-folder-m-input"
                       value={studyingName}
                       onChange={e =>
@@ -381,6 +382,7 @@ class MyKanji extends Component {
                   </div>
                   <div class="modal-body">
                     <input
+                      placeholder="Folder Name"
                       className="create-folder-m-input"
                       value={folderName2}
                       onChange={e =>
@@ -562,6 +564,7 @@ class MyKanji extends Component {
                     </div>
                     <div class="modal-body">
                       <input
+                        placeholder="Folder Name"
                         value={studyingName}
                         onChange={e =>
                           this.setState({ studyingName: e.target.value })

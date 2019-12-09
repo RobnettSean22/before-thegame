@@ -468,9 +468,6 @@ div .folders:hover a {
     margin: 0% !important;
     padding: 0% !important;
   }
-  .create-folder-m-input {
-    width: 100% !important;
-  }
 }
 @media screen and (min-width: 375px) {
   .background2 {
@@ -955,9 +952,6 @@ div .folders:hover a {
     margin: 0% !important;
     padding: 0% !important;
   }
-  .create-folder-m-input {
-    width: 100% !important;
-  }
 }
 @media screen and (min-width: 1280px) {
   .background2 {
@@ -1201,8 +1195,5 @@ div .folders:hover a {
 
     margin: 0% !important;
     padding: 0% !important;
-  }
-  .create-folder-m-input {
-    width: 100% !important;
   }
 }

@@ -435,3 +435,169 @@ div .folder-label-container {
     color: #ff2525;
   }
 }
+@media screen and (min-width: 768px) {
+  .kanji-container {
+    width: 100%;
+    height: 145px;
+    border-bottom: 3px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(249, 249, 249);
+  }
+
+  .kanji {
+    width: 70%;
+    height: 144px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .character-container {
+    height: 100%;
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .character {
+    font-size: 90px;
+  }
+  .kana {
+    width: 50%;
+    height: 100%;
+    margin-right: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .kunyomi2 {
+    font-size: 27px;
+  }
+  .onyomi2 {
+    font-size: 27px;
+    margin-left: 0%;
+  }
+
+  .pic-container {
+    width: 33%;
+    height: 100%;
+    margin: 0% 0% 0% -4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+
+  .pic-container img {
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+  .english-container2 {
+    width: 33%;
+    height: 100%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .english {
+    font-size: 27px;
+    margin: 0% 9% 0% 0%;
+  }
+
+  div .folder-label-container {
+    width: 100%;
+    height: 100px;
+    border-bottom: 3px solid black;
+    text-align: center;
+  }
+  .adk-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1%;
+  }
+
+  .add-kanji-to-folder {
+    width: 20%;
+    height: 41px;
+    border-radius: 5px;
+    margin-right: 3%;
+    background: none;
+    margin-top: 4%;
+  }
+  .add-kanji-to-folder:hover {
+    border: 3px solid #ff2525;
+  }
+
+  .kanji-add {
+    font-size: 23px;
+    padding: 0.23em;
+    padding-left: 1.3em;
+    padding-right: 1.3em;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+  .kanji-add:hover {
+    color: #ff2525;
+    text-decoration: none;
+  }
+  .quiz {
+    font-size: 24px;
+    padding: 0.23em;
+    padding-left: 1.3em;
+    padding-right: 1.3em;
+    text-decoration: none;
+    color: black;
+  }
+  .study {
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    background: white;
+  }
+  .quiz:hover {
+    text-decoration: none;
+    color: #ff2525;
+  }
+
+  .study:hover {
+    border: 3px solid #ff2525;
+  }
+
+  .delete-kanji {
+    width: 20%;
+    height: 40%;
+    color: #fa7e7e;
+    margin-top: 5%;
+    margin-bottom: 2%;
+  }
+
+  .delete-kanji:hover {
+    cursor: crosshair;
+    color: #ff2525;
+  }
+}
+@media (min-width: 1024px) {
+  .study {
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    background: white;
+    width: 25%;
+    height: 57%;
+  }
+  .quiz {
+    font-size: 31px;
+    padding: 0.23em;
+    padding-left: 1.3em;
+    padding-right: 1.3em;
+    text-decoration: none;
+    color: black;
+  }
+}

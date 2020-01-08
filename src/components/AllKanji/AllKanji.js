@@ -185,8 +185,7 @@ class AllKanji extends Component {
                 onChange={e => this.setState({ search: e.target.value })}
               />
             </div>
-
-            {filteredKanji}
+            <div className="every-kan">{filteredKanji}</div>
           </div>
         )}
       </div>

@@ -62,7 +62,6 @@ massive(CONNECTION_STRING).then(dbInstance => {
   console.log("data base is lit");
   app.set("db", dbInstance);
 });
-
 // register ********************************************
 app.post("/auth/register", register);
 

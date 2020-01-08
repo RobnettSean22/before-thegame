@@ -4,21 +4,6 @@ import Logo from "./logo.png";
 import Rapid from "../Rapid";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      search: "",
-      allKanji: []
-    };
-  }
-  readAllKanji() {
-    Rapid.get("/kanji/all").then(response => {
-      this.setState({
-        allKanji: response.data
-      });
-    });
-  }
   render() {
     return (
       <div className="background">

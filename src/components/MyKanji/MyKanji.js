@@ -166,12 +166,12 @@ class MyKanji extends Component {
             <FaSync
               className="sync"
               data-toggle="modal"
-              data-target="#study-update"
+              data-target="#know-update"
             />
 
             <div
               class="modal fade"
-              id="study-update"
+              id="know-update"
               tabindex="-1"
               role="dialog"
               aria-labelledby="exampleModalLabel"

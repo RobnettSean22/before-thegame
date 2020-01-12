@@ -22,10 +22,6 @@ class Header extends Component {
     this.logout = this.logout.bind(this);
   }
 
-  componentWillUnmount() {
-    this.logout();
-  }
-
   async logout() {
     const loggedOut = axios.delete("/auth/logout");
     this.props.setUser(loggedOut.data);

@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { setUser } from "../../reducer/userReducer";
 import "./KanjiStudyCard.css";
-import { thisTypeAnnotation } from "@babel/types";
 
 class KanjiStudyCard extends Component {
   constructor(props) {
@@ -16,7 +15,7 @@ class KanjiStudyCard extends Component {
       code1: [],
       code2: [],
       code3: [],
-      correct: ["NICE!", "GREAT!", "WITH EASE!", "CLEAN!", "BOSS!"],
+
       whatToinput: ["English", "kun-yomi", "on-yomi"],
       wi: 0,
       answer: "",
@@ -70,14 +69,14 @@ class KanjiStudyCard extends Component {
   }
 
   match(answer) {
-    const english = this.state.card[this.state.i][0].kanji.meaning.english;
-
-    const kunyomi = this.state.card[this.state.i][0].kanji.kunyomi.romaji;
-
-    const onyomi = this.state.card[this.state.i][0].kanji.onyomi.romaji;
-    if (this.state.card[this.state.i]) {
+    if (!this.state.card[this.state.i]) {
       this.props.history.push("/");
     } else {
+      const english = this.state.card[this.state.i][0].kanji.meaning.english;
+
+      const kunyomi = this.state.card[this.state.i][0].kanji.kunyomi.romaji;
+
+      const onyomi = this.state.card[this.state.i][0].kanji.onyomi.romaji;
       if (english === this.state.answer) {
         this.setState({
           i: this.state.i + 1,

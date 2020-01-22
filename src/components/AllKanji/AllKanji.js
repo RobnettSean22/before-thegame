@@ -162,7 +162,9 @@ class AllKanji extends Component {
           <div className="loading">
             <div class="loading ui segment">
               <div class="ui active dimmer">
-                <div class="mate ui massive text loader">ちょと待て下さい</div>
+                <div class="mate ui massive text loader">
+                  ちょと待って下さい
+                </div>
               </div>
               <p></p>
               <p></p>

@@ -1,3 +1,5 @@
-SELECT * FROM studied
+SELECT *
+FROM studied
 
-WHERE user_id = $1;
+WHERE user_id = $1
+ORDER BY folder_name;

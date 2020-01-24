@@ -62,6 +62,7 @@ massive(CONNECTION_STRING).then(dbInstance => {
   console.log("data base is lit");
   app.set("db", dbInstance);
 });
+app.use(express.static(`${__dirname}/../build`));
 // register ********************************************
 app.post("/auth/register", register);
 
@@ -126,6 +127,11 @@ app.get("/api/read3_kanji/:user_id/:folder_id", readKanji3);
 app.post("/api/add3_kanji/:user_id/:folder_id", addKanji3);
 
 app.delete("/api/delete3_kanji/:user_id/:folder_id/:kanji_id", deleteKanji3);
+
+const path = require("path");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 let port = SERVER_PORT || 5000;
 app.listen(port, () => console.log(`hear ya bruh on ${port}`));

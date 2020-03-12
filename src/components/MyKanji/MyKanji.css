@@ -248,10 +248,9 @@ div .folders:hover a {
   .spinner-container {
     width: 100%;
     height: 35%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    display: none;
   }
   .spinner {
     width: 26%;
@@ -490,10 +489,9 @@ div .folders:hover a {
   .spinner-container {
     width: 100%;
     height: 35%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    display: none;
   }
   .spinner {
     width: 26%;
@@ -732,10 +730,9 @@ div .folders:hover a {
   .spinner-container {
     width: 100%;
     height: 35%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    display: none;
   }
   .spinner {
     width: 26%;
@@ -977,7 +974,6 @@ div .folders:hover a {
     display: flex;
     justify-content: center;
     align-items: center;
-    display: ;
   }
   .spinner {
     width: 26%;

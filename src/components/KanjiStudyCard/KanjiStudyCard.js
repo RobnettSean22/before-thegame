@@ -69,7 +69,7 @@ class KanjiStudyCard extends Component {
   }
 
   match(answer) {
-    if (!this.state.card[this.state.i]) {
+    if (!this.state.card[this.state.i][0]) {
       this.props.history.push(
         `/folder_content/${this.props.userid}/${this.props.folderid}`
       );

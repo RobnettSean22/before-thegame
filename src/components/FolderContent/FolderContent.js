@@ -109,10 +109,10 @@ class FolderContent extends Component {
 
     return (
       <div>
-        <div className="adk-container">
-          <button className="add-kanji-to-folder">
+        <div className='adk-container'>
+          <button className='add-kanji-to-folder'>
             <Link
-              className="kanji-add"
+              className='kanji-add'
               to={{
                 pathname: `/add_to_folder/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`,
                 state: this.props.location.state
@@ -122,11 +122,10 @@ class FolderContent extends Component {
             </Link>
           </button>
         </div>
-        <div className="folder-label-container">
-          <h1 className="folder_label"></h1>
-          <button className="study">
+        <div className='folder-label-container'>
+          <button className='study'>
             <Link
-              className="quiz"
+              className='quiz'
               to={{
                 pathname: `/study/${this.props.user.user.user_id}/${this.props.match.params.folder_id}`,
                 state: this.props.location.state
@@ -145,37 +144,37 @@ class FolderContent extends Component {
             const mapShit = code.map((fu, i) => {
               return (
                 <div key={i}>
-                  <div className="kanji-container">
-                    <div className="kanji">
-                      <div className="character-container">
-                        <h1 className="character">{fu.kanji.character}</h1>
+                  <div className='kanji-container'>
+                    <div className='kanji'>
+                      <div className='character-container'>
+                        <h1 className='character'>{fu.kanji.character}</h1>
                       </div>
 
-                      <div className="kana">
-                        <h2 className="kunyomi katahira">
+                      <div className='kana'>
+                        <h2 className='kunyomi katahira'>
                           KUN-YOMI: {fu.kanji.kunyomi.hiragana}
                         </h2>
 
-                        <h2 className="onyomi2 katahira">
+                        <h2 className='onyomi2 katahira'>
                           ON-YOMI: {fu.kanji.onyomi.katakana}
                         </h2>
                       </div>
                     </div>
 
-                    <div className="pic-container">
+                    <div className='pic-container'>
                       <img
-                        className="pics"
+                        className='pics'
                         src={fu.kanji.video.poster}
-                        alt="pic"
+                        alt='pic'
                       />
                     </div>
 
-                    <div className="english-container2">
-                      <h2 className="english">
+                    <div className='english-container2'>
+                      <h2 className='english'>
                         English: {fu.kanji.meaning.english}
                       </h2>
                       <FaGhost
-                        className="delete-kanji"
+                        className='delete-kanji'
                         onClick={e =>
                           this.deleteKanji(
                             this.props.user.user.user_id,
@@ -200,37 +199,37 @@ class FolderContent extends Component {
             const mapShit = code.map((fu, i) => {
               return (
                 <div key={i}>
-                  <div className="kanji-container">
-                    <div className="kanji">
-                      <div className="character-container">
-                        <h1 className="character">{fu.kanji.character}</h1>
+                  <div className='kanji-container'>
+                    <div className='kanji'>
+                      <div className='character-container'>
+                        <h1 className='character'>{fu.kanji.character}</h1>
                       </div>
 
-                      <div className="kana">
-                        <h2 className="kunyomi katahira">
+                      <div className='kana'>
+                        <h2 className='kunyomi katahira'>
                           KUN-YOMI: {fu.kanji.kunyomi.hiragana}
                         </h2>
 
-                        <h2 className="onyomi2 katahira">
+                        <h2 className='onyomi2 katahira'>
                           ON-YOMI: {fu.kanji.onyomi.katakana}
                         </h2>
                       </div>
                     </div>
 
-                    <div className="pic-container">
+                    <div className='pic-container'>
                       <img
-                        className="pics"
+                        className='pics'
                         src={fu.kanji.video.poster}
-                        alt="pic"
+                        alt='pic'
                       />
                     </div>
 
-                    <div className="english-container">
-                      <h2 className="english">
+                    <div className='english-container'>
+                      <h2 className='english'>
                         English: {fu.kanji.meaning.english}
                       </h2>
                       <FaGhost
-                        className="delete-kanji"
+                        className='delete-kanji'
                         onClick={e =>
                           this.deleteKanji2(
                             this.props.user.user.user_id,
@@ -255,37 +254,37 @@ class FolderContent extends Component {
             const mapShit = code.map((fu, i) => {
               return (
                 <div key={i}>
-                  <div className="kanji-container">
-                    <div className="kanji">
-                      <div className="character-container">
-                        <h1 className="character">{fu.kanji.character}</h1>
+                  <div className='kanji-container'>
+                    <div className='kanji'>
+                      <div className='character-container'>
+                        <h1 className='character'>{fu.kanji.character}</h1>
                       </div>
 
-                      <div className="kana">
-                        <h2 className="kunyomi katahira">
+                      <div className='kana'>
+                        <h2 className='kunyomi katahira'>
                           KUN-YOMI: {fu.kanji.kunyomi.hiragana}
                         </h2>
 
-                        <h2 className="onyomi2 katahira">
+                        <h2 className='onyomi2 katahira'>
                           ON-YOMI: {fu.kanji.onyomi.katakana}
                         </h2>
                       </div>
                     </div>
 
-                    <div className="pic-container">
+                    <div className='pic-container'>
                       <img
-                        className="pics"
+                        className='pics'
                         src={fu.kanji.video.poster}
-                        alt="pic"
+                        alt='pic'
                       />
                     </div>
 
-                    <div className="english-container">
-                      <h2 className="english">
+                    <div className='english-container'>
+                      <h2 className='english'>
                         English: {fu.kanji.meaning.english}
                       </h2>
                       <FaGhost
-                        className="delete-kanji"
+                        className='delete-kanji'
                         onClick={e =>
                           this.deleteKanji3(
                             this.props.user.user.user_id,
